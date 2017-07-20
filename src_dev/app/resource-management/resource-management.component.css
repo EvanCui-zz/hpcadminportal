@@ -1,0 +1,82 @@
+.my-content {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  height: 100%;
+  padding-bottom: 50px;
+}
+
+.filterbar{
+  width: 260px;
+  height: 100%;
+  overflow: auto;
+}
+
+.filter-tab .mat-ink-bar {
+  background-color: #f44336;
+}
+
+.select-area {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.detail-container{
+    /* display: flex;
+    flex-direction: column; */
+    height: 100%;
+    /* border-left: 1px solid rgba(0,0,0,.12);
+    padding: 20px; */
+    position: absolute;
+    top: 15px;
+    left: 280px;
+    right: 30px;
+    /* bottom: 15px; */
+   /* overflow: auto; */
+}
+
+.search-row {
+    margin: 0px 10px 10px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+}
+
+/* .search-btn{
+  margin-right: 25px;
+} */
+
+.toggle-btn{
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 18%;
+}
+
+.toggle-btn button {
+  vertical-align: baseline;
+}
+.selected-btn {
+    color: #FFFFFF;
+    background: #3f51b5;
+    margin-left: 10px;
+}
+
+.non-selected-btn{
+    color: #FFFFFF;
+    background: #888888;
+    margin-left: 10px;
+}
+
+
+.nodes-content {
+  margin-top: 70px;
+  /* height: 100%; */
+  /* overflow-y: scroll;  */
+  background: #FFFFFF;
+  padding: 15px;
+  margin-bottom: 50px;
+}
