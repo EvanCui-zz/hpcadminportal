@@ -1,19 +1,10 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation} from '@angular/core';
 // import { Http, Response } from '@angular/http';
 import * as d3 from 'd3';
-// import  './input.tsv';
-// import  './input1.tsv';
-// import  './input2.tsv';
-// import  './input3.tsv';
-// import  './input4.tsv';
-// import  './input5.tsv';
-// import  './input6.tsv';
-// import  './input7.tsv';
-// import  './input8.tsv';
-// import  './input9.tsv';
 
 @Component({
   selector: 'heatmap',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './heatmap.component.html',
   styleUrls: [ './heatmap.component.css' ]
 })
@@ -51,25 +42,25 @@ export class HeatmapComponent implements OnInit{
           .append("g")
           .attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
 
-        this.dayLabels = this.svg.selectAll(".dayLabel")
-          .data(this.days)
-          .enter().append("text")
-            .text(function (d) { return d; })
-            .attr("x", 0)
-            .attr("y", (d, i) => i * this.gridSize)
-            .style("text-anchor", "end")
-            .attr("transform", "translate(-6," + this.gridSize / 1.5 + ")")
-            .attr("class", (d, i) => ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"));
+        // this.dayLabels = this.svg.selectAll(".dayLabel")
+        //   .data(this.days)
+        //   .enter().append("text")
+        //     .text(function (d) { return d; })
+        //     .attr("x", 0)
+        //     .attr("y", (d, i) => i * this.gridSize)
+        //     .style("text-anchor", "end")
+        //     .attr("transform", "translate(-6," + this.gridSize / 1.5 + ")")
+        //     .attr("class", (d, i) => ((i >= 0 && i <= 4) ? "dayLabel mono axis axis-workweek" : "dayLabel mono axis"));
 
-         this.timeLabels = this.svg.selectAll(".timeLabel")
-          .data(this.times)
-          .enter().append("text")
-            .text((d) => d)
-            .attr("x", (d, i) => i * this.gridSize)
-            .attr("y", 0)
-            .style("text-anchor", "middle")
-            .attr("transform", "translate(" + this.gridSize / 2 + ", -6)")
-            .attr("class", (d, i) => ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"));
+        //  this.timeLabels = this.svg.selectAll(".timeLabel")
+        //   .data(this.times)
+        //   .enter().append("text")
+        //     .text((d) => d)
+        //     .attr("x", (d, i) => i * this.gridSize)
+        //     .attr("y", 0)
+        //     .style("text-anchor", "middle")
+        //     .attr("transform", "translate(" + this.gridSize / 2 + ", -6)")
+        //     .attr("class", (d, i) => ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"));
     }
     
     drawChart(data: any){
@@ -91,33 +82,62 @@ export class HeatmapComponent implements OnInit{
           value: +d.value
         };
       };
+
+      const div = d3.select("body").append("div")	
+      .attr("class", "tooltip")				
+      .style("opacity", 0);
+
       const heatmapChart = function(tsvFile) {
         d3.tsv(tsvFile, type, (error, data) => {
           const colorScale = d3.scaleQuantile()
             .domain([0, buckets - 1, d3.max(data, (d) => d.value)])
             .range(colors);
          
+          const cards = svg.selectAll(".node")
+              .data(data, (d) => { return d.day+':'+d.hour;});
+          
+        
 
-          const cards = svg.selectAll(".hour")
-              .data(data, (d) => d.day+':'+d.hour);
+          const rect = cards.enter().append("rect");
 
-          cards.append("title");
-
-          cards.enter().append("rect")
-              .attr("x", (d) => (d.hour - 1) * gridSize)
+          rect.attr("x", (d) => (d.hour - 1) * gridSize)
               .attr("y", (d) => (d.day - 1) * gridSize)
-              .attr("rx", 3)
-              .attr("ry", 3)
-              .attr("class", "hour bordered")
+              .attr("rx", 4)
+              .attr("ry", 4)
+              .attr("class", "node bordered")
               .attr("width", gridSize)
               .attr("height", gridSize)
               .style("fill", colors[0])
-            .merge(cards)
+              .on("click", function(d){
+                console.log(d.value);
+               
+              })
+              .on("mouseover",function(d){
+                div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+                div.html(d.value)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+              })
+              .on("mousemove",function(d){
+                div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+                div	.html(d.value)	
+                .style("left", (d3.event.pageX) + "px")		
+                .style("top", (d3.event.pageY - 28) + "px");	
+              })
+              .on("mouseout",function(){
+                // return tooltip.style("visibility","hidden");
+                div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+              })
+              .merge(cards)
               .transition()
-              .duration(200)
+              .duration(300)
               .style("fill", (d) => colorScale(d.value));
-
-          cards.select("title").text((d) => d.value);
 
           cards.exit().remove();
 
@@ -157,19 +177,14 @@ export class HeatmapComponent implements OnInit{
     ngOnInit(): void {
       const datasets = ["input1.tsv","input2.tsv","input3.tsv","input4.tsv","input5.tsv",
         "input6.tsv","input7.tsv","input8.tsv","input9.tsv"];
-      this.drawPannel(10000);
+      this.drawPannel(100);
       var testFunc = this.drawChart('../../../assets/input1.tsv');
       testFunc('../../../assets/input1.tsv');
+    
       setInterval(()=>{   
         testFunc('../../../assets/'+datasets[Math.floor(Math.random()*(9-1)+1)]);
       },10000);
-
-    }
-    
-
-     
       
-
- 
+    }
   
 }
