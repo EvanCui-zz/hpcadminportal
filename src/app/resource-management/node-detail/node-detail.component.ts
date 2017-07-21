@@ -91,30 +91,71 @@ export class NodeDetailComponent implements OnInit{
     }
   ];
 
-     folders = [
+   jobs = [
     {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
+       name: "Job1",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '40%',
+       date: "2017/7/21 17:17:00"
     },
     {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
+       name: "Job2",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '60%',
+       date: "2017/7/21 17:17:00"
     },
     {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
-  notes = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
+       name: "Job3",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '80%',
+       date: "2017/7/21 17:17:00"
     },
     {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
-];
+       name: "Job4",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '90%',
+       date: "2017/7/21 17:17:00"
+    },
+    {
+       name: "Job5",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '100%',
+       date: "2017/7/21 17:17:00"
+    },
+    {
+       name: "Job6",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '100%',
+       date: "2017/7/21 17:17:00"
+    },
+    {
+       name: "Job7",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '100%',
+       date: "2017/7/21 17:17:00"
+    },
+    {
+       name: "Job8",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '100%',
+       date: "2017/7/21 17:17:00"
+     },
+     {
+       name: "Job5",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '100%',
+       date: "2017/7/21 17:17:00"
+     }
+   ];
   
     constructor(
         private route: ActivatedRoute,
