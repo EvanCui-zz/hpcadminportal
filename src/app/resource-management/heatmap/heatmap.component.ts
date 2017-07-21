@@ -129,7 +129,6 @@ export class HeatmapComponent implements OnInit{
                 .style("top", (d3.event.pageY - 28) + "px");	
               })
               .on("mouseout",function(){
-                // return tooltip.style("visibility","hidden");
                 div.transition()		
                 .duration(500)		
                 .style("opacity", 0);	

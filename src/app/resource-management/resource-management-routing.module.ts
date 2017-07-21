@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ResourceManagementComponent } from './resource-management.component';
 import { ResourceDetailComponent }     from './resource-detail/resource-detail.component';
 import { HeatmapComponent } from './heatmap/heatmap.component';
+import { NodeDetailComponent } from './node-detail/node-detail.component';
 
 // import { CanDeactivateGuard }     from '../can-deactivate-guard.service';
 // import { CrisisDetailResolver }   from './crisis-detail-resolver.service';
@@ -20,6 +21,11 @@ const resourceManagementRoutes: Routes = [
       {
         path: 'nodelist',
         component: ResourceDetailComponent,   
+      },
+      {
+        path: 'detail/:name',
+      
+        component: NodeDetailComponent,
       },
       {
         path: '',

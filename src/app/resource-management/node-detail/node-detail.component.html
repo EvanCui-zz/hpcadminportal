@@ -1,0 +1,36 @@
+<div class="detail-page">
+    <div class="node-name">
+        <div class="detail-icon">
+            <md-icon style="width: 40px; height:40px;font-size: 40px">computer</md-icon>
+        </div>
+        <div class="detail-node-name">{{nodeName}}</div>
+    </div>
+    <div class="detail-block" *ngFor="let detailItem of nodeDetail">
+        <div class="detail-title">
+            {{detailItem.name}}
+        </div>
+        <div class="detail-info" *ngFor="let item of detailItem.detail">
+            <!-- <div class="detail-icon item"><md-icon>info_outline</md-icon></div>  -->
+            <div class="info-name item">{{item.name}}</div>
+            <div class="info-detail item">{{item.info}}</div>
+        </div>
+    </div>
+    <div class="detail-block">
+        <div class="detail-title">
+           History Jobs
+        </div>
+        <div class="detail-info">
+            Job detail to be show
+        </div>
+    </div>
+    <div class="detail-block">
+        <div class="detail-title">
+           History Metrics
+        </div>
+        <div class="detail-info">
+            <div class="my-chart">
+                <div echarts [options]="chartOption" class="heatmap-chart" (chartInit)="onChartInit($event)"></div>
+            </div> 
+        </div>
+    </div>
+</div>

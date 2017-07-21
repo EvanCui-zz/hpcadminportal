@@ -1,16 +1,6 @@
-
-<!-- <div class="detail-container"> -->
-    <!-- <div class="search-row">
-        <md-input-container>
-            <input mdInput placeholder="All" value="">
-        </md-input-container>
-        <button md-raised-button>search</button>
-        <button md-raised-button class="selected-btn">Node List</button>
-        <button md-raised-button class="non-selected-btn">Heatmap</button>
-    </div> -->
 <div>
     <div class="node-list">
-        <div class="node-item"  *ngFor="let node of nodes">
+        <div class="node-item"  *ngFor="let node of nodes" (click)="showDetail(node.name)">
             <div class="node-item-icon">
                 <md-icon md-list-icon color="primary" style="width: 40px; height: 40px; font-size: 35px">
                     devices
@@ -46,4 +36,3 @@
         </md-paginator>
     </div>
 </div>
-<!-- </div> -->

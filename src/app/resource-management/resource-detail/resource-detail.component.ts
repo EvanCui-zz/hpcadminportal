@@ -1,7 +1,9 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { NodeItem } from '../node-item';
+import { Router } from '@angular/router';
 
 import { ResourceManagementService } from '../resource-management.service';
+
 
 
 @Component({
@@ -12,12 +14,19 @@ import { ResourceManagementService } from '../resource-management.service';
 export class ResourceDetailComponent implements OnInit {
   @Input() filiterItem: string;
     nodes: NodeItem[]
-//   heroes: Hero[] = [];
 
-  constructor(private resourceManagementService: ResourceManagementService) { }
+
+  constructor(
+    private router: Router,
+    private resourceManagementService: ResourceManagementService
+  ){}
 
   ngOnInit(): void {
     this.resourceManagementService.getNodeList()
       .then(nodes => this.nodes = nodes);
+  }
+
+  showDetail(name:string){
+    this.router.navigate(['/resource/detail',name]);
   }
 }

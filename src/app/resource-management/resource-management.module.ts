@@ -7,6 +7,7 @@ import { ResourceManagementRoutingModule } from './resource-management-routing.m
 import { ResourceManagementComponent } from './resource-management.component';
 import { ResourceDetailComponent } from './resource-detail/resource-detail.component';
 import { HeatmapComponent } from './heatmap/heatmap.component';
+import { NodeDetailComponent } from './node-detail/node-detail.component';
 import { FilterlistModule } from '../filterlist/filterlist.module';
 import { ResourceManagementService } from './resource-management.service';
 
@@ -23,7 +24,8 @@ import { ResourceManagementService } from './resource-management.service';
   declarations: [
     ResourceManagementComponent,
     ResourceDetailComponent,
-    HeatmapComponent
+    HeatmapComponent,
+    NodeDetailComponent
   ],
   providers: [
     ResourceManagementService
