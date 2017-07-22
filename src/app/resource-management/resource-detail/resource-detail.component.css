@@ -59,8 +59,9 @@
 .node-list{
    position: absolute;
    height: 92%; 
-   left: 0;
-   right: 0;
+   top: 10px;
+   left: 20px;
+   right: 20px;
    bottom: 40px;
    overflow: auto;
 }

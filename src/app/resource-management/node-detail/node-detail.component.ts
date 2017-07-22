@@ -96,63 +96,70 @@ export class NodeDetailComponent implements OnInit{
        name: "Job1",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '40%',
+       progress: '40',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job2",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '60%',
+       progress: '60',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job3",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '80%',
+       progress: '80',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job4",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '90%',
+       progress: '90',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job5",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '100%',
+       progress: '100',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job6",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '100%',
+       progress: '100',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job7",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '100%',
+       progress: '100',
        date: "2017/7/21 17:17:00"
     },
     {
        name: "Job8",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '100%',
+       progress: '100',
        date: "2017/7/21 17:17:00"
      },
-     {
-       name: "Job5",
+    {
+       name: "Job9",
        owner: "Jingjing Li",
        state: "ongoing",
-       progress: '100%',
+       progress: '100',
+       date: "2017/7/21 17:17:00"
+    },
+    {
+       name: "Job10",
+       owner: "Jingjing Li",
+       state: "ongoing",
+       progress: '100',
        date: "2017/7/21 17:17:00"
      }
    ];

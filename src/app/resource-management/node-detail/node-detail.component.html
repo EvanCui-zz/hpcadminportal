@@ -16,17 +16,25 @@
         </div>
     </div>
     <div class="detail-block">
-        <div class="detail-title">
-           History Jobs
+        <div class="detail-title job-block">
+            <div>History Jobs</div>
+            <div class="more-link">view more</div>
         </div>
         <div class="job-info" *ngFor="let job of jobs">
-            <div class="detail-icon item"><md-icon>schedure</md-icon></div>  
-            <div class="job-basic-info">
-                <div class="job-name item">{{job.name}}</div>
-                <div class="job-owner item">{{job.owner}}</div>
+            <div class="job-header">
+                <div class="detail-icon item"><md-icon>schedule</md-icon></div>  
+                <div class="job-basic-info">
+                    <div class="job-name item">{{job.name}}</div>
+                    <div class="job-owner item">{{job.owner}}</div>
+                </div>
             </div>
-            <div class="job-state">{{job.state}}</div>
-            <div class="job-progress">{{job.progress}}</div>
+            <div class="job-state item">{{job.state}}</div>
+            <div class="job-progress item">
+                {{job.progress}}%
+                <md-progress-bar
+                    [value] = "job.progress | number">
+                </md-progress-bar>
+            </div>
             <div class="info-date item">{{job.date}}</div>
         </div>
     </div>
