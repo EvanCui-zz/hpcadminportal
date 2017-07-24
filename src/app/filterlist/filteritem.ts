@@ -1,6 +1,4 @@
 export class FilterItem {
-    name: string;
-    details: {
-        name: string;
-    }[]
+    filterKey: string;
+    filterDetail: string[]
 }

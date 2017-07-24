@@ -9,6 +9,7 @@ import { ResourceDetailComponent } from './resource-detail/resource-detail.compo
 import { HeatmapComponent } from './heatmap/heatmap.component';
 import { NodeDetailComponent } from './node-detail/node-detail.component';
 import { FilterlistModule } from '../filterlist/filterlist.module';
+import { HttpPrefixService } from '../http-prefix.service';
 import { ResourceManagementService } from './resource-management.service';
 
 
@@ -28,6 +29,7 @@ import { ResourceManagementService } from './resource-management.service';
     NodeDetailComponent
   ],
   providers: [
+    HttpPrefixService,
     ResourceManagementService
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

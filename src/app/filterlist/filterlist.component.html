@@ -1,16 +1,13 @@
  <div *ngFor="let item of items" class="subnav">
-    <a  class="filter-item" (click) = "getNodes(item.name)" [class.all-active]="selectedName === item.name">
+    <a  class="filter-item" (click) = "getNodes(item.filterKey,'all')" [class.all-active]="selectedName === item.filterKey">
         <button md-icon-button>
             <md-icon>done</md-icon>
         </button> 
-     {{ item.name }}      
+     {{ item.filterKey | filterName}}      
     </a>  
-        <div *ngFor="let detail of item.details" class="filter-detail" [class.one-active]="selectedName === detail.name" >
-            <a (click) = "getNodes(detail.name)">   
-                <!-- <button md-icon-button>
-                    <md-icon></md-icon>
-                </button> -->
-                {{detail.name}} 
+        <div *ngFor="let detail of item.filterDetail" class="filter-detail" [class.one-active]="filter === detail" >
+            <a (click) = "getNodes(item.filterKey,detail)">   
+                {{detail}} 
             </a>   
         </div>
     <md-divider></md-divider>

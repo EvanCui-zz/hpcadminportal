@@ -10,29 +10,30 @@
                 <div class="node-name">{{node.name}} </div>
                 <div class="node-info">
                     <md-icon class="text-icon online-node">settings_power</md-icon> 
-                        {{node.state}} 
+                        {{node.nodeState}} 
                         <span class="info-divider">| </span> 
                     <md-icon class="text-icon online-node">lightbulb_outline</md-icon>
-                        {{node.health}} 
+                        {{node.nodeHealth}} 
                         |
                     <md-icon class="text-icon online-node">dashboard</md-icon>  
-                        {{node.template}} 
+                        {{node.nodeTemplate}} 
                         |
-                    <md-icon class="text-icon online-node">pin_drop</md-icon>
+                    <!-- <md-icon class="text-icon online-node">pin_drop</md-icon>
                         {{node.location}} 
-                        |
+                        | -->
                     <md-icon class="text-icon online-node">group_work</md-icon> 
-                        <span *ngFor="let gp of node.group">
-                            {{gp.name}}
+                        <span *ngFor="let gp of node.groups">
+                            {{gp}}
                         </span>
                 </div>
             </div>
         </div>
     </div>
     <div class="paginator">
-        <md-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]">
+        <md-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event">
         </md-paginator>
     </div>
 </div>

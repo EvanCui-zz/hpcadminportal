@@ -1,10 +1,10 @@
 export class NodeItem {
     name: string;
-    state: string;
-    health: string;
-    template: string;
-    location: string;
-    group: {
+    nodeState: string;
+    nodeHealth: string;
+    nodeTemplate: string;
+    // location: string;
+    groups: {
         name: string
     }[]
 }

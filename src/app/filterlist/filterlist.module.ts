@@ -6,7 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 // import { MdButtonModule, MdListModule, MdIconModule } from '@angular/material';
 import { FilterlistComponent } from '../filterlist/filterlist.component';
-import {NgMaterialModule} from '../ng-material.module';
+import { NgMaterialModule } from '../ng-material.module';
+import { FilterNamePipe } from './filter.pipe';
 
 @NgModule({
   imports: [
@@ -16,12 +17,13 @@ import {NgMaterialModule} from '../ng-material.module';
     NgMaterialModule
   ],
   declarations: [
-    FilterlistComponent
+    FilterlistComponent,
+    FilterNamePipe
   ],
   providers: [
     // CrisisService
   ],
-  exports: [FilterlistComponent, CommonModule, FormsModule, RouterModule, NgMaterialModule],
+  exports: [FilterlistComponent, CommonModule, FormsModule, RouterModule, NgMaterialModule, FilterNamePipe],
   schemas: [ NO_ERRORS_SCHEMA ]
   
 })

@@ -46,16 +46,15 @@ export class ResourceManagementComponent implements OnInit{
   ){}
 
   getFilterList(): void {
-    this.resourceManagementService.getFilterList().then(filterlist => this.filterlist = filterlist);
-  }
-
-  getNodeList(): void {
-    this.resourceManagementService.getNodeList().then(nodes => this.nodes = nodes);
+    this.resourceManagementService.getFilterList().then(filterlist => {
+      this.filterlist = filterlist;
+      this.router.navigate(['/resource/nodelist','nodeState','all']);
+    });
   }
 
   ngOnInit(): void {
     this.getFilterList();
-    this.getNodeList();
+    this.onGetNodes({nodeState: ''});
     this.showView = "nodelist";
   }
   
@@ -67,12 +66,9 @@ export class ResourceManagementComponent implements OnInit{
     this.router.navigate(['/detail'])
   }
 
-  onGetNodes(name: string) {
-    console.log(name);
-    this.resourceManagementService.getNodeList().then(nodes=>{
-      this.nodes = nodes;
-      this.router.navigate(['/resource/nodelist']);
-    });
+  onGetNodes(filterDetail: {[key:string]:string}) {
+      let key = Object.keys(filterDetail)[0];
+      this.router.navigate(['/resource/nodelist',key,filterDetail[key]]);
   }
 
   showHeatmap(): void {

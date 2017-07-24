@@ -1,5 +1,5 @@
 import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, RunGuardsAndResolvers } from '@angular/router';
 
 import { ResourceManagementComponent } from './resource-management.component';
 import { ResourceDetailComponent }     from './resource-detail/resource-detail.component';
@@ -19,8 +19,9 @@ const resourceManagementRoutes: Routes = [
         component: HeatmapComponent
       },
       {
-        path: 'nodelist',
-        component: ResourceDetailComponent,   
+        path: 'nodelist/:filterKey/:filterDetail',
+        component: ResourceDetailComponent, 
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'  
       },
       {
         path: 'detail/:name',
