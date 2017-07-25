@@ -8,7 +8,7 @@ import { Location }                 from '@angular/common';
   selector: 'node-detail',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './node-detail.component.html',
-  styleUrls: [ './node-detail.component.css' ]
+  styleUrls: [ './node-detail.component.scss' ]
 })
 export class NodeDetailComponent implements OnInit{
     nodeName: string;

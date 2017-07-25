@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'sidenav',
-  styleUrls: ['sidenav.component.css'],
+  styleUrls: ['sidenav.component.scss'],
   templateUrl: 'sidenav.component.html',
 })
 
@@ -17,12 +17,12 @@ export class SidenavComponent {
     },
     {
       name: 'Resource Management',
-      icon: 'device_hub',
+      icon: 'cloud',
       path: '/resource'
     },
     {
       name: 'Job Management',
-      icon: 'cloud',
+      icon: 'device_hub',
       // path: '/job'
       path: 'dashboard'
     },

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'nodelist',
-  styleUrls: ['nodelist.component.css'],
+  styleUrls: ['nodelist.component.scss'],
   templateUrl: 'nodelist.component.html',
 })
 

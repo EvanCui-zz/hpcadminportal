@@ -12,7 +12,7 @@ import {PageEvent} from '@angular/material';
 @Component({
   selector: 'resource-detail',
   templateUrl: './resource-detail.component.html',
-  styleUrls: [ './resource-detail.component.css' ]
+  styleUrls: [ './resource-detail.component.scss' ]
 })
 export class ResourceDetailComponent implements OnInit {
   @Input() filiterItem: string;

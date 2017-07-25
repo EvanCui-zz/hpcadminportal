@@ -9,7 +9,7 @@ import { ResourceManagementService } from './resource-management.service';
 @Component({
   selector: 'resource-management',
   templateUrl: './resource-management.component.html',
-  styleUrls: [ './resource-management.component.css' ]
+  styleUrls: [ './resource-management.component.scss' ]
 })
 export class ResourceManagementComponent implements OnInit{
    condition = [
@@ -78,7 +78,7 @@ export class ResourceManagementComponent implements OnInit{
 
   showNodelist(): void {
     this.showView = "nodelist";
-    this.router.navigate(['/resource/nodelist']);
+    this.router.navigate(['/resource/nodelist/nodeState/all']);
   }
  
 }

@@ -1,0 +1,72 @@
+@import '../../mixin';
+
+.node-item{
+    margin-bottom: 15px;
+}
+.node-item {
+    @include display-flex;
+    flex-direction: row;
+    background-color: rgb(255,255,255);
+    @include pd(10px, 10px, 10px, 10px);
+    @include mg(5px, 5px, 5px, 5px);
+
+     &:hover {
+        cursor: pointer;
+        @include box-s(0px, 0px, 5px, #888888);
+        transform: translateY(2px);
+    }
+}
+
+.list-node-name{
+    @include font-basic(1.55em, rgba(0, 0, 0, 0.65), 500);
+    @include pd(0, 10px, 0, 5px);
+}
+
+.node-info {
+    color: rgba(0,0,0,.52);
+    @include display-flex;
+    text-align: right;
+
+    .info-item-small {
+        @include width-height(150px, 100%);
+    }
+
+    .info-item-medium {
+        @include width-height(250px, 100%);
+    }
+
+    .info-item-large {
+        @include width-height(400px, 100%);
+    }
+}
+.node-item-icon {
+    padding: 0 15px 0 0;
+    @include font-basic(40px, $them-color);
+    @include width-height(40px, 40px);
+}
+
+
+.node-detail {
+    justify-content: center;
+    flex-direction: row;
+    @include display-flex;
+}
+
+.text-icon {
+    vertical-align: middle;
+}
+
+.online-node {
+     color: $them-color;
+}
+
+
+.node-list{
+   height: 92%; 
+   @include position-absolute(10px, 20px, 40px, 20px);
+   overflow: auto;
+}
+
+.paginator{
+    @include position-absolute(auto, 0px, 0px, 0px);
+}

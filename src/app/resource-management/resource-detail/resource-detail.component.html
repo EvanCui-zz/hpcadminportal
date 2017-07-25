@@ -2,29 +2,37 @@
     <div class="node-list">
         <div class="node-item"  *ngFor="let node of nodes" (click)="showDetail(node.name)">
             <div class="node-item-icon">
-                <md-icon md-list-icon color="primary" style="width: 40px; height: 40px; font-size: 35px">
+                <md-icon style="width: 3em; height: 3em; font-size: 1em">
                     devices
                 </md-icon>
-            </div>
-            <div class="node-deatil">
-                <div class="node-name">{{node.name}} </div>
+            </div> 
+            <div class="node-detail">
+                <div class="list-node-name">{{node.name}} </div>
                 <div class="node-info">
-                    <md-icon class="text-icon online-node">settings_power</md-icon> 
-                        {{node.nodeState}} 
-                        <span class="info-divider">| </span> 
-                    <md-icon class="text-icon online-node">lightbulb_outline</md-icon>
-                        {{node.nodeHealth}} 
-                        |
-                    <md-icon class="text-icon online-node">dashboard</md-icon>  
-                        {{node.nodeTemplate}} 
-                        |
+                    <div class="info-item-small">
+                        <md-icon class="text-icon online-node">settings_power</md-icon> 
+                         {{node.nodeState}} 
+                            
+                    </div>
+                    <div class="info-item-small">
+                        <md-icon class="text-icon online-node">lightbulb_outline</md-icon>
+                            {{node.nodeHealth}} 
+                           
+                    </div>
+                    <div class="info-item-medium">
+                        <md-icon class="text-icon online-node">dashboard</md-icon>  
+                            {{node.nodeTemplate}} 
+                           
+                    </div>
                     <!-- <md-icon class="text-icon online-node">pin_drop</md-icon>
                         {{node.location}} 
                         | -->
-                    <md-icon class="text-icon online-node">group_work</md-icon> 
-                        <span *ngFor="let gp of node.groups">
-                            {{gp}}
-                        </span>
+                    <div class="info-item-large">
+                        <md-icon class="text-icon online-node">group_work</md-icon> 
+                            <span *ngFor="let gp of node.groups">
+                                {{gp}}
+                            </span>
+                    </div>
                 </div>
             </div>
         </div>

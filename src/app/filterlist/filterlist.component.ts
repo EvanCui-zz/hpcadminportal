@@ -4,7 +4,7 @@ import { FilterItem } from './filteritem';
 @Component({
   selector: 'filterlist',
   templateUrl: 'filterlist.component.html',
-  styleUrls: ['filterlist.component.css'],
+  styleUrls: ['filterlist.component.scss'],
 })
 export class FilterlistComponent implements OnInit{
     @Input() items: FilterItem[];

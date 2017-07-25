@@ -1,0 +1,93 @@
+@import '../mixin.scss';
+$filterlist-width: 260px;
+
+.my-content {
+  @include display-flex;
+  overflow: auto;
+  height: 100%;
+}
+
+.filterbar{
+  @include width-height(250px, 100%);
+}
+
+.filterlist-block {
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  width: $filterlist-width;
+  // border-right: 1px dashed #888888;
+  @include box-s(1px, 0px, 5px, #888888);
+  padding-bottom: 20px;
+}
+
+.filterlist-title {
+  @include position-absolute(2px, 10px, auto, 10px);
+  height: 40px;
+  font-size: 1.2em;
+  line-height: 40px;
+  color: #696969;
+}
+
+.filterlist{
+  width: 240px;
+  overflow: auto;
+  @include position-absolute(40px, 3px, 60px, 3px);
+  display: block;
+  margin: 0 auto;
+}
+
+.select-area {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.detail-container{
+    height: 100%;
+    @include position-absolute(0px, 0px, auto, 270px);
+}
+
+.search-row {
+    @include mg(0, 10px, 0, 10px);
+    text-align: center;
+    @include position-absolute(0, 0, auto, 0);
+
+}
+
+.toggle-btn{
+  display: inline-block;
+  @include position-absolute(10px, 0, auto, auto);
+
+  button {
+      vertical-align: baseline;
+      @include box-s(0px, 0px, 25px, rgba(0, 0, 0, 0.6));
+  }
+}
+
+.selected-btn {
+    color: #FFFFFF;
+    background: $them-color;
+    margin-left: 10px;
+}
+
+.non-selected-btn{
+    color: #FFFFFF;
+    background: #888888;
+    margin-left: 10px;
+}
+
+
+.nodes-content {
+  background: #FFFFFF;
+  @include position-absolute(60px, 10px, 0px, 0);
+  overflow: hidden;
+}
+
+.filter-area{
+  @include position-absolute(22%, auto, auto, 0);
+}
+
+md-icon {
+  font-size: 3em;
+}

@@ -5,10 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/toPromise';
 import { FilterItem } from '../filterlist/filteritem';
-import { FilterList } from './mock-filterlist';
 
 import { NodeItem } from './node-item';
-import { NodeList } from './mock-nodelist';
 import { HttpPrefixService } from '../http-prefix.service';
 
 @Injectable()

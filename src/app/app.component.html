@@ -1,17 +1,22 @@
 <!-- The content below is only a placeholder and can be replaced. -->
 
 <div class="container">
-    <toolbar class="toolbar"></toolbar>
-    <md-sidenav-container>
-        <md-sidenav #sidenav mode="side" opened="true">
-            <sidenav class="sidenav"></sidenav> 
-        </md-sidenav>
-        <div class="content">
-            <button md-icon-button (click)="sidenav.toggle()" 
-                style="position: absolute; left: -2px;">
+    <toolbar></toolbar>
+    <div class= "sidenav-container">
+          <!-- <md-sidenav #sidenav mode="side" opened="true">
+            <button md-icon-button  class="dehaze-btn" (click)="sidenav.toggle()" >
                 <md-icon>dehaze</md-icon>
-            </button>
+            </button> 
+            <sidenav class="sidenav"></sidenav> 
+         </md-sidenav>      -->
+    
+ 
+            <div class="sidenav-block">          
+                <sidenav class="sidenav"></sidenav>      
+          </div>      
+
+        <div class="content">     
             <router-outlet></router-outlet>
         </div>
-    </md-sidenav-container>
+    </div>
 </div>

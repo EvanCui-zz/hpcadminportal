@@ -1,0 +1,51 @@
+@import '../mixin';
+
+.nav-title {
+    @include pd(10px, 0,0, 10px);
+    @include font-basic(1.1em);
+    
+}
+
+.nav-block {
+    @include pd(55px,0,0,0);
+}
+
+.nav-list{
+  @include display-flex;
+  color: rgba(0, 0, 0, .7);
+  @include pd(10px, 10px, 10px, 10px);
+  @include mg(10px, 10px, 10px, 10px);
+  outline: none;
+   
+  &:link {
+    @include box-s(0px, 0px, 5px, #888888);
+    border: 1px solid #CDC5BF;
+    color: $them-color;
+  }
+  
+  &:visited {
+    @include box-s(0px, 0px, 5px, #888888);
+    border: 1px solid #CDC5BF;
+    color: $them-color;
+  }
+
+  &:hover {
+    cursor: pointer;
+    @include box-s(0px, 0px, 5px, #888888);
+    transform: translateY(2px);
+  }
+ 
+  &.active {
+    @include box-s(0px, 0px, 2px, #888888);
+    border: 1px solid #CDC5BF;
+    color: $them-color;
+  }
+}
+
+.nav-name {
+    @include pd(0,0,0,10px);
+}
+
+md-icon{
+    // color: #0078d7;
+}

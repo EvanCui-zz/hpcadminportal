@@ -1,17 +1,24 @@
 <div class="my-content">
   <div class="filterbar">
-    <div class="select-area">
+    <!-- <div class="select-area">
       <md-select placeholder="Nodes">
         <md-option *ngFor="let cd of condition" [value]="cd.value">
           {{ cd.viewValue }}
         </md-option>
       </md-select>
+    </div> -->
+    <div class="filterlist-block">
+       <div class="filterlist-title">
+        Filter by
+      </div> 
+      <div class="filterlist">
+        <filterlist [items] = 'filterlist' (onGetNodes) = 'onGetNodes($event)'></filterlist>
+      </div>
     </div>
-    <filterlist class='filterlist' [items] = 'filterlist' (onGetNodes) = 'onGetNodes($event)'></filterlist>
   </div>
   <div class="detail-container">
     <div class="search-row">
-      <div class="filter-area">
+      <!-- <div class="filter-area">
         <md-select placeholder="By Group">
           <md-option *ngFor="let gp of groups" [value]="gp.value">
             {{ gp.viewValue }}
@@ -26,7 +33,7 @@
         <md-input-container>
           <input mdInput placeholder="Node Name" value="">
       </md-input-container>
-      <button md-raised-button class="search-btn">search</button>
+      <button md-raised-button class="search-btn">search</button> -->
       <div class="toggle-btn">
         <button md-raised-button [class.non-selected-btn]="showView !== 'nodelist'" [class.selected-btn]="showView == 'nodelist'" (click)="showNodelist()">Node List</button>
         <button md-raised-button [class.non-selected-btn]="showView !== 'heatmap'" [class.selected-btn]="showView == 'heatmap'" (click)="showHeatmap()">Heatmap</button>

@@ -1,0 +1,76 @@
+@import '../mixin';
+
+.subnav{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    @include pd(5px, 10px, 0px, 10px);
+    margin-bottom: 5px;
+    
+}
+
+.filterlist a{
+   text-overflow: ellipsis;
+} 
+
+.filter-item, .filter-detail {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    
+
+    &:link {
+        @include box-s(0px, 0px, 5px, #888888);
+        border: 1px solid #CDC5BF;
+        color: $them-color;
+    }
+  
+    &:visited {
+        @include box-s(0px, 0px, 5px, #888888);
+        border: 1px solid #CDC5BF;
+        color: $them-color;
+    }
+
+    &:hover {
+        cursor: pointer;
+        @include box-s(0px, 0px, 5px, #888888);
+        transform: translateY(2px);
+        white-space: initial;
+        height: auto;
+    }
+ 
+    &.active {
+        @include box-s(0px, 0px, 2px, #888888);
+        border: 1px solid #CDC5BF;
+        // color: $them-color;
+        // background: 
+    }
+}
+
+.filter-item{
+    @include width-height(100%, 2.5em);
+    // @include mg(2px, 0px, 2px, 0px);
+    line-height: 2em;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: bold;
+    border-bottom: 1px dashed #B5B5B5;
+}
+
+.filter-detail {
+     font-size: 0.95em; 
+     @include width-height(100%, 2.5em);
+    //  @include mg(5px, 0px, 5px, 0px);
+     line-height: 2em;  
+     
+}
+
+.filter-item a, .filter-detail a{
+    text-decoration: none;
+    text-overflow: ellipsis;
+    display: inline-block;
+    @include pd(5px, 0, 5px, 10px);
+    @include width-height(100%,100%);
+}
+
+.filter-detail a{
+    @include pd(5px, 0, 5px, 20px);
+}

@@ -1,0 +1,78 @@
+@import 'mixin';
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+html, body, .container {
+  @include mg(0 ,0 ,0 ,0);
+  @include full-size;
+}
+
+@font-face {
+font-family: $font-stack;
+src: url('../assets/MWFMDL2/MWFMDL2.eot'); /* IE9 Compat Modes */
+src: url('../assets/MWFMDL2/MWFMDL2.svg') format('svg'), /* Legacy iOS */
+     url('../assets/MWFMDL2/MWFMDL2.ttf')  format('truetype'), /* Safari, Android, iOS */
+     url('../assets/MWFMDL2/MWFMDL2.woff')
+     url('../assets/MWFMDL2/MWFMDL2.woff2') ;
+}
+
+
+ .toolbar {
+  @include position-fixed(0,0,auto,0);
+  z-index:300;
+} 
+
+md-sidenav-container {
+  height: 100%;
+  padding-top: 60px;
+}
+
+.sidenav {
+  padding-top: 64px;
+}
+
+.container {
+  position: relative;
+}
+
+.my-scrolling-content, .scroll-content {
+  overflow: scroll;
+}
+
+.content {
+ @include width-height(auto, 100%);
+ @include position-absolute(55px, 0, 0, 242px);
+}
+
+// .dehaze-btn {
+//   @include position-absolute(55px, 0px, 0px, auto);
+// }
+
+.sidenav-container {
+  position: relative;
+  transform: translate3d(0,0,0);
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  background-color: #fafafa;
+  color: rgba(0,0,0,.87);overflow: hidden;
+  height: 100%;
+}
+
+.sidenav-block {
+   display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    min-width: 5vw;
+    outline: 0;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    // transform: translate3d(-100%,0,0);
+    background: #ffffff;
+}
