@@ -2,20 +2,17 @@
 
 <div class="container">
     <toolbar></toolbar>
-    <div class= "sidenav-container">
-          <!-- <md-sidenav #sidenav mode="side" opened="true">
-            <button md-icon-button  class="dehaze-btn" (click)="sidenav.toggle()" >
-                <md-icon>dehaze</md-icon>
-            </button> 
-            <sidenav class="sidenav"></sidenav> 
-         </md-sidenav>      -->
-    
- 
-            <div class="sidenav-block">          
-                <sidenav class="sidenav"></sidenav>      
-          </div>      
-
-        <div class="content">     
+    <div class= "content-container">
+        <div class="sidenav-block" [class.shrink]="isShrink">   
+            <div class="nav-header">
+                <div class="nav-dehaze" (click)="toggleShrink()">
+                    <md-icon>dehaze</md-icon>
+                </div>
+                 <div class="nav-title">Managements</div>  
+            </div>     
+            <sidenav class="sidenav"></sidenav>          
+        </div>      
+        <div class="content" [class.enlarge]="isEnlarge">     
             <router-outlet></router-outlet>
         </div>
     </div>

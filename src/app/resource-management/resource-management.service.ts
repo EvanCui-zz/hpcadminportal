@@ -11,37 +11,38 @@ import { HttpPrefixService } from '../http-prefix.service';
 
 @Injectable()
 export class ResourceManagementService {
-    private headers = new Headers({'Content-type': 'application/json'});
+    private headers = new Headers({ 'Content-type': 'application/json' });
     private resourceUrl: string;
     private nodeList: NodeItem[];
 
-    constructor(private httpPrefixService: HttpPrefixService, private http: Http){
+    constructor(private httpPrefixService: HttpPrefixService, private http: Http) {
         this.resourceUrl = this.httpPrefixService.getUrlPrefix();
     }
 
     getFilterList(): Promise<FilterItem[]> {
         return this.http
-                   .get(this.resourceUrl+'/api/nodes/filters')
-                   .toPromise()
-                   .then(response =>{
-                       console.log(response.json());
-                       return response.json() as FilterItem[]});
+            .get(this.resourceUrl + '/api/nodes/filters')
+            .toPromise()
+            .then(response => {
+                console.log(response.json());
+                return response.json() as FilterItem[]
+            });
     }
 
     getNodeList(statu: string): Promise<NodeItem[]> {
         return this.http
-                   .get(this.resourceUrl+'/api/nodes/status?'+statu)
-                   .toPromise()
-                   .then(response => {
-                       return response.json() as NodeItem[];
-                   });
+            .get(this.resourceUrl + '/api/nodes/status?' + statu)
+            .toPromise()
+            .then(response => {
+                return response.json() as NodeItem[];
+            });
     }
 
-    getFilteredNodeList(){
-            return this.nodeList;
+    getFilteredNodeList() {
+        return this.nodeList;
     }
 
-    setNodeList(nodelist: NodeItem[]){
+    setNodeList(nodelist: NodeItem[]) {
         this.nodeList = nodelist;
     }
 
@@ -49,6 +50,6 @@ export class ResourceManagementService {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-    
+
 
 }

@@ -1,5 +1,25 @@
 @import 'mixin';
 
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// **Be sure that you only ever include this mixin once!**
+@include mat-core();
+
+// Define the theme.
+$hpc-app-primary: mat-palette($mat-blue);
+$hpc-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+$hpc-app-theme:   mat-light-theme($hpc-app-primary, $hpc-app-accent);
+
+// Include the theme styles for only specified components.
+// @include mat-core-theme($hpc-app-theme);
+// @include mat-button-theme($hpc-app-theme);
+// @include mat-progress-bar-theme($hpc-app-theme);
+@include angular-material-theme($hpc-app-theme);
+
+
 body {
   font: 100% $font-stack;
   color: $primary-color;
@@ -9,16 +29,6 @@ html, body, .container {
   @include mg(0 ,0 ,0 ,0);
   @include full-size;
 }
-
-@font-face {
-font-family: $font-stack;
-src: url('../assets/MWFMDL2/MWFMDL2.eot'); /* IE9 Compat Modes */
-src: url('../assets/MWFMDL2/MWFMDL2.svg') format('svg'), /* Legacy iOS */
-     url('../assets/MWFMDL2/MWFMDL2.ttf')  format('truetype'), /* Safari, Android, iOS */
-     url('../assets/MWFMDL2/MWFMDL2.woff')
-     url('../assets/MWFMDL2/MWFMDL2.woff2') ;
-}
-
 
  .toolbar {
   @include position-fixed(0,0,auto,0);
@@ -44,35 +54,74 @@ md-sidenav-container {
 
 .content {
  @include width-height(auto, 100%);
- @include position-absolute(55px, 0, 0, 242px);
+ @include position-absolute(52px, 0, 0, 242px);
 }
 
-// .dehaze-btn {
-//   @include position-absolute(55px, 0px, 0px, auto);
-// }
-
-.sidenav-container {
+.content-container {
   position: relative;
   transform: translate3d(0,0,0);
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   display: block;
   background-color: #fafafa;
-  color: rgba(0,0,0,.87);overflow: hidden;
+  color: rgba(0,0,0,.87);
+  overflow: hidden;
   height: 100%;
 }
 
 .sidenav-block {
-   display: block;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 3;
-    min-width: 5vw;
-    outline: 0;
-    box-sizing: border-box;
-    height: 100%;
-    overflow-y: auto;
-    // transform: translate3d(-100%,0,0);
-    background: #ffffff;
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  // min-width: 5vw;
+  outline: 0;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  // transform: translate3d(-100%,0,0);
+  background: #ffffff;
+}
+
+.nav-dehaze {
+  @include pd(0,0,0,10px);
+  &:hover {
+    cursor: pointer;
+    color:#0277BD;
+  }
+}
+
+.nav-header {
+  @include display-flex;
+  // justify-content: space-between;  
+  @include box-s(0, 0px, 5px, rgba(0, 0, 0, 0.3));
+  @include pd(65px, 10px, 10px, 10px);
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.nav-title {
+  @include pd(0, 0, 0, 20px);
+  font-size: 1.2em;
+  color: #696969;
+}
+
+.shrink {
+  width:62px;
+  // height:100px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:width 5s;
+  -moz-transition:width 5s; /* Firefox 4 */
+  -webkit-transition:width 5s; /* Safari and Chrome */
+  -o-transition:width 5s; /* Opera */
+}
+
+.enlarge {
+  @include position-absolute(52px, 0, 0, 62px);
+  // height:100px;
+//   transition:width 5s;
+//   -moz-transition:width 5s; /* Firefox 4 */
+//   -webkit-transition:width 5s; /* Safari and Chrome */
+//   -o-transition:width 5s; /* Opera */
 }

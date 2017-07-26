@@ -8,4 +8,11 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  isShrink = true;
+  isEnlarge = true;
+
+  toggleShrink(){
+    this.isShrink = !this.isShrink;
+    this.isEnlarge = !this.isEnlarge;
+  }
 }

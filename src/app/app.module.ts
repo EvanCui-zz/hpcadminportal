@@ -15,8 +15,6 @@ import { AppComponent } from './app.component';
 // import { DashboardComponent } from './dashboard/dashboard.compnent';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-// import { FilterlistComponent } from './filterlist/filterlist.component';
-import { NodelistComponent } from './nodelist/nodelist.component';
 import { HeroService } from './dashboard/hero.service';
 
 
@@ -25,8 +23,7 @@ import { HeroService } from './dashboard/hero.service';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    SidenavComponent,
-    NodelistComponent
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

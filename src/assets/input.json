@@ -1,0 +1,38 @@
+[
+    {
+        "nodeName": "HPCHN03",
+        "displayName": "CPU Usage (%)",
+        "value": 1.63935459,
+        "counter": "_Total"
+    },
+    {
+        "nodeName": "HPCHN02",
+        "displayName": "CPU Usage (%)",
+        "value": 2.45997834,
+        "counter": "_Total"
+    },
+    {
+        "nodeName": "HPCHN01",
+        "displayName": "CPU Usage (%)",
+        "value": 2.29682779,
+        "counter": "_Total"
+    },
+    {
+        "nodeName": "HPCHN03",
+        "displayName": "CPU Usage (%)",
+        "value": 1.63935459,
+        "counter": "_Total"
+    },
+    {
+        "nodeName": "HPCHN02",
+        "displayName": "CPU Usage (%)",
+        "value": 2.45997834,
+        "counter": "_Total"
+    },
+    {
+        "nodeName": "HPCHN01",
+        "displayName": "CPU Usage (%)",
+        "value": 2.29682779,
+        "counter": "_Total"
+    }
+]

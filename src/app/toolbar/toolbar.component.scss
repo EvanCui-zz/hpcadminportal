@@ -3,7 +3,7 @@
 .toolbar {
     @include position-fixed(0,0,auto,0);
     @include pd(0, 30px, 0, 30px);
-    background: #ffffff;
+    background: #0277BD;
     // background: #000000;
     // color: #ffffff;
     @include display-flex;
@@ -18,5 +18,5 @@
 }
 
 .product-name {
-    @include font-basic(1.2em, rgba(0,0,0,0.7), 500);
+    @include font-basic(1.2em, white, 500);
 }

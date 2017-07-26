@@ -1,5 +1,10 @@
-<div class="nav-block">
-    <div class="nav-title">Managements</div>
+<div class="nav-block" [class.shrink] = "isShrink">
+    <!-- <div class="nav-header">
+        <div class="nav-dehaze" (click)="toggleShrink()">
+            <md-icon>dehaze</md-icon>
+        </div>
+    </div> -->
+     <!-- <div class="nav-title">Managements</div>  -->
     <div *ngFor="let management of managements" routerLink={{management.path}} routerLinkActive="active" class="nav-list">
         <md-icon>{{management.icon}}</md-icon>
         <div class="nav-name">{{management.name}}</div>

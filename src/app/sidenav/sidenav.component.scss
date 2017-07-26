@@ -1,13 +1,7 @@
 @import '../mixin';
 
-.nav-title {
-    @include pd(10px, 0,0, 10px);
-    @include font-basic(1.1em);
-    
-}
-
 .nav-block {
-    @include pd(55px,0,0,0);
+    position: relative;
 }
 
 .nav-list{
@@ -36,16 +30,19 @@
   }
  
   &.active {
-    @include box-s(0px, 0px, 2px, #888888);
-    border: 1px solid #CDC5BF;
+    // @include box-s(0px, 0px, 2px, #888888);
+    // border: 1px solid #CDC5BF;
     color: $them-color;
   }
 }
 
 .nav-name {
-    @include pd(0,0,0,10px);
+  @include pd(0,0,0,20px);
 }
 
-md-icon{
-    // color: #0078d7;
+.nav-title {
+  @include pd(0, 0, 0, 20px);
+  @include font-basic(1.1em, #828282);
+  line-height: 1.1em;
 }
+
