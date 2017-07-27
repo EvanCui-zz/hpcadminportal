@@ -30,6 +30,10 @@ html, body, .container {
   @include full-size;
 }
 
+body {
+  overflow: hidden;
+}
+
  .toolbar {
   @include position-fixed(0,0,auto,0);
   z-index:300;

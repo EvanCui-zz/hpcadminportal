@@ -1,56 +1,25 @@
 <div class="my-content">
   <div class="filterbar">
-    <!-- <div class="select-area">
-      <md-select placeholder="Nodes">
-        <md-option *ngFor="let cd of condition" [value]="cd.value">
-          {{ cd.viewValue }}
-        </md-option>
-      </md-select>
-    </div> -->
     <div class="filterlist-block">
-       <div class="filterlist-title">
+      <div class="filterlist-title">
         Filter by
-      </div> 
+      </div>
       <div class="filterlist">
-        <filterlist [items] = 'filterlist' (onGetNodes) = 'onGetNodes($event)'></filterlist>
+        <filterlist [items]='filterlist' (onGetNodes)='onGetNodes($event)'></filterlist>
       </div>
     </div>
   </div>
   <div class="detail-container">
     <div class="search-row">
-      <!-- <div class="filter-area">
-        <md-select placeholder="By Group">
-          <md-option *ngFor="let gp of groups" [value]="gp.value">
-            {{ gp.viewValue }}
-          </md-option>
-        </md-select>
-        <md-select placeholder="By Health">
-          <md-option *ngFor="let hl of health" [value]="hl.value">
-            {{ hl.viewValue }}
-          </md-option>
-        </md-select>
-      </div>
-        <md-input-container>
-          <input mdInput placeholder="Node Name" value="">
-      </md-input-container>
-      <button md-raised-button class="search-btn">search</button>
-        <div class="toggle-btn">
-        <button md-raised-button [class.non-selected-btn]="showView !== 'nodelist'" [class.selected-btn]="showView == 'nodelist'" (click)="showNodelist()">Node List</button>
-        <button md-raised-button [class.non-selected-btn]="showView !== 'heatmap'" [class.selected-btn]="showView == 'heatmap'" (click)="showHeatmap()">Heatmap</button>
-      </div> -->
+
       <div class="toggle-btn">
-        <div  [class.non-selected-btn]="showView !== 'nodelist'" [class.selected-btn]="showView == 'nodelist'" (click)="showNodelist()">Node List</div>
-        <div  [class.non-selected-btn]="showView !== 'heatmap'" [class.selected-btn]="showView == 'heatmap'" (click)="showHeatmap()">Heatmap</div>
+        <div [class.non-selected-btn]="showView !== 'nodelist'" [class.selected-btn]="showView == 'nodelist'" (click)="showNodelist()">Node List</div>
+        <div [class.non-selected-btn]="showView !== 'heatmap'" [class.selected-btn]="showView == 'heatmap'" (click)="showHeatmap()">Heatmap</div>
       </div>
-    <!-- <div class="tab-nav">
-       <ul>
-         <li><a class="tab1 open"  [class.open]="showView == 'nodelist'" (click)="showNodelist()">Node List</a></li>
-         <li><a class="tab2"  [class.open]="showView == 'heatmap'" (click)="showHeatmap()">HeatMap</a></li>
-      </ul>
-    </div> -->
-  </div>
-    <div class="nodes-content">  
-        <router-outlet></router-outlet>
+
+    </div>
+    <div class="nodes-content">
+      <router-outlet></router-outlet>
     </div>
   </div>
 

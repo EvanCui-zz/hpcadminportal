@@ -18,14 +18,19 @@
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 60px;					
+    width: 80px;				
     font-weight: bold;					
-    padding: 2px;				
-    font: 16px sans-serif;
+    padding: 8px;				
+    font: 0.8em sans-serif;
     background: lightsteelblue;	
     border: 0px;		
-    border-radius: 8px;			
-    pointer-events: none;			
+    border-radius: 5px;			
+    pointer-events: none; 
+    
+    .nodeName {
+      font-weight: bold;
+      font-size: 1em;
+    }
 }
 
 .node:hover {
@@ -56,4 +61,12 @@ text.axis-workweek {
 
 text.axis-worktime {
   fill: #000;
+}
+
+
+.chart-title {
+  @include font-basic(1.1em, #FFF);
+  @include position-absolute(0px, auto, auto, 0px);
+  @include pd(10px, 30px, 10px, 30px);
+  background: #0288D1;
 }

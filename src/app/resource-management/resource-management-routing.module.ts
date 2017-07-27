@@ -1,8 +1,8 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes, RunGuardsAndResolvers } from '@angular/router';
 
 import { ResourceManagementComponent } from './resource-management.component';
-import { ResourceDetailComponent }     from './resource-detail/resource-detail.component';
+import { ResourceDetailComponent } from './resource-detail/resource-detail.component';
 import { HeatmapComponent } from './heatmap/heatmap.component';
 import { NodeDetailComponent } from './node-detail/node-detail.component';
 
@@ -15,17 +15,17 @@ const resourceManagementRoutes: Routes = [
     component: ResourceManagementComponent,
     children: [
       {
-        path: 'heatmap',
-        component: HeatmapComponent
+        path: 'heatmap/:filterKey/:filterDetail',
+        component: HeatmapComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
       },
       {
         path: 'nodelist/:filterKey/:filterDetail',
-        component: ResourceDetailComponent, 
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange'  
+        component: ResourceDetailComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
       },
       {
         path: 'detail/:name',
-      
         component: NodeDetailComponent,
       },
       {

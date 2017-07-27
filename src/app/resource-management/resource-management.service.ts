@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import { FilterItem } from '../filterlist/filteritem';
 
 import { NodeItem } from './node-item';
+import { HeatmapItem } from './heatmap-item';
 import { HttpPrefixService } from '../http-prefix.service';
 
 @Injectable()
@@ -23,23 +24,30 @@ export class ResourceManagementService {
         return this.http
             .get(this.resourceUrl + '/api/nodes/filters')
             .toPromise()
-            .then(response => {
-                console.log(response.json());
+            .then(response => {          
                 return response.json() as FilterItem[]
-            });
+            })
+            .catch(this.handleError);
     }
 
     getNodeList(statu: string): Promise<NodeItem[]> {
         return this.http
             .get(this.resourceUrl + '/api/nodes/status?' + statu)
             .toPromise()
-            .then(response => {
+            .then(response => {               
                 return response.json() as NodeItem[];
-            });
+            })
+            .catch(this.handleError);
     }
 
-    getFilteredNodeList() {
-        return this.nodeList;
+    getHeatmapInfo(aliases: string):Promise<HeatmapItem[]>{
+        return this.http    
+                .get(this.resourceUrl + '/api/Metrics?'+ aliases)
+                .toPromise()
+                .then(response => {
+                    return response.json() as HeatmapItem[];
+                })
+                .catch(this.handleError);
     }
 
     setNodeList(nodelist: NodeItem[]) {

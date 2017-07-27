@@ -1,251 +1,66 @@
-<div>
-    <div class="node-list">
-        <div class="node-item"  *ngFor="let node of nodes" (click)="showDetail(node.name)">
-            <div class="node-detail">
-                <div class="list-node-name">{{node.name}} </div>
-                <div class="node-info">
-                     <div class="info-item-small node-state">
-                        <div class="state-item" [class.online-node]="node.nodeState == 'Online'">
-                            <md-icon class="text-icon small-icon">settings_power</md-icon> 
-                            {{node.nodeState}}
-                        </div>
-                        <div class="state-item" [class.online-node]="node.nodeHealth == 'OK'">
-                            <md-icon class="text-icon small-icon">lightbulb_outline</md-icon>
-                            {{node.nodeHealth}}  
-                        </div>             
-                    </div> 
-                    
-                    <div class="info-item-medium">
-                        <!-- <md-icon class="text-icon online-node">dashboard</md-icon>   -->
-                        <div class="node-info-title">
-                            Template
-                        </div>
-                        <div class="list-item">
-                            {{node.nodeTemplate}} 
-                        </div>   
+<div class="node-list">
+    <div class="node-item" *ngFor="let node of nodes" (click)="showDetail(node.name)">
+        <div class="node-detail">
+            <div class="list-node-name">{{node.name}} </div>
+            <div class="node-info">
+                <div class="info-item-small node-state">
+                    <div class="state-item" [class.online-node]="node.nodeState == 'Online'">
+                        <md-icon class="text-icon small-icon">settings_power</md-icon>
+                        {{node.nodeState}}
                     </div>
-                    <div class="info-item-large">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Groups
-                        </div>
-                         <div class="list-item"> 
-                            <span *ngFor="let gp of node.groups">
+                    <div class="state-item" [class.online-node]="node.nodeHealth == 'OK'">
+                        <md-icon class="text-icon small-icon">lightbulb_outline</md-icon>
+                        {{node.nodeHealth}}
+                    </div>
+                </div>
+
+                <div class="info-item-medium">
+                    <!-- <md-icon class="text-icon online-node">dashboard</md-icon>   -->
+                    <div class="node-info-title">
+                        Template
+                    </div>
+                    <div class="list-item">
+                        {{node.nodeTemplate}}
+                    </div>
+                </div>
+
+                <div class="info-item-large">
+                  
+                    <div class="node-info-title">
+                        Groups
+                    </div>
+                    <div class="list-item">
+                        <span *ngFor="let gp of node.groups">
                                 {{gp}}
                             </span>
-                         </div> 
                     </div>
-                    <div class="info-item-superLarge">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Operations
-                        </div>
-                         <div class="list-item"> 
-                            Discovering the configuration of the head node-7/4/2017 11:40:31 AM
-                         </div> 
+                </div>
+
+                <div class="info-item-superLarge">
+                    
+                    <div class="node-info-title">
+                        Operations
                     </div>
-                    <div class="info-item-small">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            CPU Usage
-                        </div>
-                        <div class="list-usage"> 
-                            <md-progress-bar
-                                [value] = "40">
-                            </md-progress-bar>
-                        </div>  
+                    <div class="list-item">
+                        Discovering the configuration of the head node-7/4/2017 11:40:31 AM
+                    </div>
+                </div>
+                
+                <div class="info-item-small">
+                   
+                    <div class="node-info-title">
+                        CPU Usage
+                    </div>
+                    <div class="list-usage">
+                        <md-progress-bar [value]="40">
+                        </md-progress-bar>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!--test by ljj  starts -->
-        <div class="node-item"  *ngFor="let node of nodes" (click)="showDetail(node.name)">
-            <div class="node-detail">
-                <div class="list-node-name">{{node.name}} </div>
-                <div class="node-info">
-                     <div class="info-item-small node-state">
-                        <div class="state-item" [class.online-node]="node.nodeState == 'Online'">
-                            <md-icon class="text-icon small-icon">settings_power</md-icon> 
-                            {{node.nodeState}}
-                        </div>
-                        <div class="state-item" [class.online-node]="node.nodeHealth == 'OK'">
-                            <md-icon class="text-icon small-icon">lightbulb_outline</md-icon>
-                            {{node.nodeHealth}}  
-                        </div>             
-                    </div> 
-                    
-                    <div class="info-item-medium">
-                        <!-- <md-icon class="text-icon online-node">dashboard</md-icon>   -->
-                        <div class="node-info-title">
-                            Template
-                        </div>
-                        <div class="list-item">
-                            WCFBrokerNode Template
-                        </div>   
-                    </div>
-                    <div class="info-item-large">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Groups
-                        </div>
-                         <div class="list-item"> 
-                            <span *ngFor="let gp of node.groups">
-                                {{gp}}
-                            </span>
-                         </div> 
-                    </div>
-                    <div class="info-item-superLarge">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Operations
-                        </div>
-                         <div class="list-item"> 
-                            Discovering the configuration of the head node-7/4/2017 11:40:31 AM
-                         </div> 
-                    </div>
-                    <div class="info-item-small">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            CPU Usage
-                        </div>
-                         <div class="list-usage"> 
-                            <md-progress-bar
-                                [value] = "40">
-                            </md-progress-bar>
-                         </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="node-item"  *ngFor="let node of nodes" (click)="showDetail(node.name)">
-            <div class="node-detail">
-                <div class="list-node-name">{{node.name}} </div>
-                <div class="node-info">
-                     <div class="info-item-small node-state">
-                        <div class="state-item" [class.online-node]="node.nodeState == 'Online'">
-                            <md-icon class="text-icon small-icon">settings_power</md-icon> 
-                            {{node.nodeState}}
-                        </div>
-                        <div class="state-item" [class.online-node]="node.nodeHealth == 'OK'">
-                            <md-icon class="text-icon small-icon">lightbulb_outline</md-icon>
-                            {{node.nodeHealth}}  
-                        </div>             
-                    </div> 
-                    
-                    <div class="info-item-medium">
-                        <!-- <md-icon class="text-icon online-node">dashboard</md-icon>   -->
-                        <div class="node-info-title">
-                            Template
-                        </div>
-                        <div class="list-item">
-                            {{node.nodeTemplate}} 
-                        </div>   
-                    </div>
-                    <div class="info-item-large">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Groups
-                        </div>
-                         <div class="list-item"> 
-                            <span *ngFor="let gp of node.groups">
-                                {{gp}}
-                            </span>
-                         </div> 
-                    </div>
-                    <div class="info-item-superLarge">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Operations
-                        </div>
-                         <div class="list-item"> 
-                            Discovering the configuration of the head node-7/4/2017 11:40:31 AM
-                         </div> 
-                    </div>
-                    <div class="info-item-small">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            CPU Usage
-                        </div>
-                         <div class="list-usage"> 
-                            <md-progress-bar
-                                [value] = "40">
-                            </md-progress-bar>
-                         </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="node-item"  *ngFor="let node of nodes" (click)="showDetail(node.name)">
-            <div class="node-detail">
-                <div class="list-node-name">{{node.name}} </div>
-                <div class="node-info">
-                     <div class="info-item-small node-state">
-                        <div class="state-item" [class.online-node]="node.nodeState == 'Online'">
-                            <md-icon class="text-icon small-icon">settings_power</md-icon> 
-                            {{node.nodeState}}
-                        </div>
-                        <div class="state-item" [class.online-node]="node.nodeHealth == 'OK'">
-                            <md-icon class="text-icon small-icon">lightbulb_outline</md-icon>
-                            {{node.nodeHealth}}  
-                        </div>             
-                    </div> 
-                    
-                    <div class="info-item-medium">
-                        <!-- <md-icon class="text-icon online-node">dashboard</md-icon>   -->
-                        <div class="node-info-title">
-                            Template
-                        </div>
-                        <div class="list-item">
-                            {{node.nodeTemplate}} 
-                        </div>   
-                    </div>
-                    <div class="info-item-large">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Groups
-                        </div>
-                         <div class="list-item"> 
-                            <span *ngFor="let gp of node.groups">
-                                {{gp}}
-                            </span>
-                         </div> 
-                    </div>
-                   <div class="info-item-superLarge">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            Operations
-                        </div>
-                         <div class="list-item"> 
-                            Discovering the configuration of the head node-7/4/2017 11:40:31 AM
-                         </div> 
-                    </div>
-                    <div class="info-item-small">
-                        <!-- <md-icon class="text-icon online-node">group_work</md-icon>  -->
-                        <div class="node-info-title">
-                            CPU Usage
-                        </div>
-                         <div class="list-usage"> 
-                            <md-progress-bar
-                                [value] = "40">
-                            </md-progress-bar>
-                         </div> 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- test by ljj ends  -->
-
-
-
-
     </div>
-    <div class="paginator">
-        <md-paginator [length]="length"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="pageSizeOptions"
-              (page)="pageEvent = $event">
-        </md-paginator>
-    </div>
+</div>
+<div class="paginator">
+    <md-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="pageEvent = $event">
+    </md-paginator>
 </div>

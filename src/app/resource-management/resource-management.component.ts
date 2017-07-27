@@ -12,33 +12,12 @@ import { ResourceManagementService } from './resource-management.service';
   styleUrls: [ './resource-management.component.scss' ]
 })
 export class ResourceManagementComponent implements OnInit{
-   condition = [
-    {value: 'nodes', viewValue: 'Nodes'},
-    {value: 'operation', viewValue: 'Operation'}
-  ];
-
-  groups = [
-    {value: 'HeadNodes', viewValue: 'HeadNodes'},
-    {value: 'ComputeNodes', viewValue: 'ComputeNodes'},
-    {value: 'WCFBrokerNodes', viewValue: 'WCFBrokerNodes'},
-    {value: 'AzureNodes', viewValue: 'AzureNodes'},
-    {value: 'UnmanagedServerNodes', viewValue: 'UnmanagedServerNodes'},
-    {value: 'LinuxNodes', viewValue: 'LinuxNodes'},
-    {value: 'AzureBatchServicePools', viewValue: 'AzureBatchServicePools'}
-  ];
-
-  health = [
-    {value: 'OK', viewValue: 'OK'},
-    {value: 'Warning', viewValue: 'Warning'},
-    {value: 'Error', viewValue: 'Error'},
-    {value: 'Transitional', viewValue: 'Transitional'},
-    {value: 'Unapproved', viewValue: 'Unapproved'}
-  ];
 
   filterlist: FilterItem[];
   selectedItem: string;
   nodes: NodeItem[];
   showView: string;
+  filterQueryString = "/nodeState/all";
 
   constructor(
     private router: Router,
@@ -54,7 +33,7 @@ export class ResourceManagementComponent implements OnInit{
 
   ngOnInit(): void {
     this.getFilterList();
-    this.onGetNodes({nodeState: ''});
+    // this.onGetNodes({nodeState: ''});
     this.showView = "nodelist";
   }
   
@@ -68,17 +47,19 @@ export class ResourceManagementComponent implements OnInit{
 
   onGetNodes(filterDetail: {[key:string]:string}) {
       let key = Object.keys(filterDetail)[0];
-      this.router.navigate(['/resource/nodelist',key,filterDetail[key]]);
+      this.filterQueryString = "/"+key+"/"+filterDetail[key]; 
+      console.log(this.filterQueryString);
+      this.router.navigate(['/resource/'+this.showView,key,filterDetail[key]]);
   }
 
   showHeatmap(): void {
     this.showView = "heatmap";
-    this.router.navigate(['/resource/heatmap']);
+    this.router.navigate(['/resource/heatmap'+this.filterQueryString]);
   }
 
   showNodelist(): void {
     this.showView = "nodelist";
-    this.router.navigate(['/resource/nodelist/nodeState/all']);
+    this.router.navigate(['/resource/nodelist'+this.filterQueryString]);
   }
  
 }
