@@ -1,128 +1,77 @@
 @import '../../mixin';
 
-.node-item{
-    margin-bottom: 15px;
+.node-list {
+    @include pd(15px, 20px, 15px, 20px);
+    font-size: 0.95em;
 }
+
 .node-item {
     @include display-flex;
-    flex-direction: row;
-    background-color: rgb(255,255,255);
-    @include pd(10px, 10px, 10px, 10px);
-    @include mg(5px, 5px, 5px, 5px);
-
-     &:hover {
-        cursor: pointer;
-        @include box-s(0px, 0px, 5px, #888888);
-        transform: translateY(2px);
-    }
+    // display: flex;
+    border-bottom: 1px dashed #D3D3D3;
+    height: 40px;
+    width: 100%;
 }
 
-.list-node-name{
-    @include font-basic(1.55em, rgba(0, 0, 0, 0.65), 500);
-    @include pd(0, 10px, 0, 5px);
-}
-
-.node-info {
+.node-name, .node-state, .node-health, .node-job, .node-event, .node-heatmap {
     @include display-flex;
-    width: 100%;
-    // text-align: right;
-
-    .info-item-small {
-        @include width-height(100px, 100%);
-        @include mg(0, 10px, 0, 10px);
-        -webkit-flex: none;
-        flex: none;
-    }
-
-    .info-item-medium {
-        @include width-height(200px, 100%);
-        @include mg(0, 10px, 0, 10px);
-        -webkit-flex: none;
-        flex: none;
-    }
-
-    .info-item-large {
-        @include width-height(350px, 100%);
-        @include mg(0, 10px, 0, 10px);
-        -webkit-flex: none;
-        flex: none;
-    }
-
-    .info-item-superLarge {
-        @include width-height(500px, 100%);
-        @include mg(0, 10px, 0, 10px);
-        -webkit-flex: none;
-        flex: none;
-    }
+    // display: flex;
+    @include mg(0, 3px, 0, 0);
+    -webkit-flex: none;
+    flex: none;
 }
 
-.node-item-icon {
-    padding: 0 15px 0 0;
-    @include font-basic(40px, $them-color);
-    @include width-height(40px, 40px);
-}
-
-.node-info-title {
-      @include font-basic(0.9em, rgba(0, 0, 0, .52));
-      padding-bottom: 2px;
-}
-
-
-.node-detail {
-    flex-direction: row;
-    @include display-flex;
-    width: 100%;
-}
-
-.text-icon {
-    vertical-align: middle;
-}
-
-.small-icon {
-    font-size: 1.3em;
-    width: 1.3em;
-    height:1.3em;
-    line-height: 1.3em;
-}
-
-.online-node {
-     color: #2196f3;
-    // color: $them-color;
-}
-
-
-.node-list{
-   @include width-height(100%, auto);
-   @include position-absolute(10px, 0px, 120px, 0px);
-   overflow: auto;
-}
-
-.node-state{
-    @include font-basic(0.92em, rgba(0, 0, 0, .42));
-    @include pd(0,0,0, 20px);
-}
-
-
-.paginator{
-    @include position-absolute(auto, 0px, 60px, 0px);
-}
-
-.list-item{
-    // border-left: 2px solid $them-color;
-    font-size: 1.0em;
-    color: rgba(0, 0, 0, 0.8);
-    width: 100%;
+.text-info {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.list-usage {
-    // width: 20px;
-    height: 20px;
-    padding-top: 10px;
+.error-node {
+    background: #da4e4e !important;
+}
+.light-color {
+    background: #74a4ca !important;
 }
 
-.mat-progress-bar-fill::after {
-    background-color: #1E90FF;
+.node-name {
+    width: 15%;
+}
+.node-state {
+    width: 10%;
+}
+.node-health {
+    width: 10%;
+}
+// .node-job {
+//     width: 15%;
+// }
+.node-heatmap{
+    width: 25%;
+}
+.node-event { 
+    // width: 100px;
+    width: 40%;
+}
+
+
+i{
+    @include pd(0, 3px, 0, 0);
+}
+
+.online-node {
+    color: $them-color;
+}
+
+.heatmap-item {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background: $them-color;
+    @include box-s(1px, 1px, 5px, #696969);
+    margin-right: 8px;
+}
+
+.event-text {
+    color: #696969;
 }

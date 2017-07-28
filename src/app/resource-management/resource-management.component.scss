@@ -13,12 +13,14 @@ $filterlist-width: 260px;
 
 .filterlist-block {
   position: absolute;
-  top: 0;
+  top: 5px;
+  left: 5px;
   bottom: 0px;
   width: $filterlist-width;
   // border-right: 1px dashed #888888;
   @include box-s(1px, 0px, 5px, #888888);
   padding-bottom: 20px;
+  background: #E9E9E9;
 }
 
 .filterlist-title {
@@ -81,17 +83,17 @@ $filterlist-width: 260px;
 .selected-btn {
     
     // margin-left: 10px;
-    transform: scale(1.2,1.2);
+    // transform: scale(1.2,1.2);
     color: #2196f3;
     z-index: 10;
-    @include box-s(1px, -1px, 4px, #CFCFCF);
+    // @include box-s(1px, -1px, 4px, #CFCFCF);
     // z-index: 1000;
 }
 
 .non-selected-btn{
     color: #B5B5B5;
     // background: #696969;
-    transform: scale(0.8, 0.8);
+    // transform: scale(0.8, 0.8);
    
 }
 
@@ -100,7 +102,7 @@ $filterlist-width: 260px;
   background: #FFFFFF;
   @include position-absolute(60px, 10px, 0px, 0);
   overflow: hidden;
-  // @include box-s(0, -1px, 5px, rgba(0, 0, 0, 0.6));
+  // @include box-s(1px, 1px, 5px, #696969);
   // border-top: 1px solid #eee;
   z-index: 200;
 }

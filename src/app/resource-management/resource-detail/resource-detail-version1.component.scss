@@ -1,0 +1,170 @@
+@import '../../mixin';
+
+.node-item{
+    margin-bottom: 15px;
+}
+.node-item {
+    // @include display-flex;
+    display: block;
+    float: left;
+    width: 45%;
+    overflow: hidden;
+    // flex-direction: row;
+    background-color: rgb(255,255,255);
+    @include pd(10px, 10px, 10px, 10px);
+    @include mg(20px, 20px, 20px, 20px);
+
+    //  &:hover {
+    //     cursor: pointer;
+    //     @include box-s(0px, 0px, 5px, #888888);
+    //     transform: translateY(2px);
+    // }
+}
+
+.node-icon {
+    font-size: 4em;
+    color: $them-color;
+    @include mg(0, 5px, 0, 0px);
+}
+
+.name-info {
+    @include display-flex;
+}
+
+.startedTime {
+     @include font-basic(0.8em, #838B8B, 400);
+}
+
+.list-node-name{
+    @include font-basic(1.5em, rgba(0, 0, 0, 0.7), 600);
+    @include pd(0, 10px, 0, 5px);
+}
+
+.node-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // text-align: right;
+}
+
+.info-item {
+    @include display-flex;
+    
+    .info-item-small {
+        @include width-height(100px, 100%);
+        @include mg(0, 10px, 0, 10px);
+        -webkit-flex: none;
+        flex: none;
+    }
+
+    .info-item-medium {
+        @include width-height(200px, 100%);
+        @include mg(0, 10px, 0, 10px);
+        -webkit-flex: none;
+        flex: none;
+    }
+
+    .info-item-large {
+        @include width-height(350px, 100%);
+        @include mg(0, 10px, 0, 10px);
+        -webkit-flex: none;
+        flex: none;
+    }
+
+    .info-item-superLarge {
+        @include width-height(500px, 100%);
+        @include mg(0, 10px, 0, 10px);
+        -webkit-flex: none;
+        flex: none;
+    }
+}
+
+.item-mg {
+    @include mg(0, 10px, 0, 10px);
+}
+.node-item-icon {
+    padding: 0 15px 0 0;
+    @include font-basic(40px, $them-color);
+    @include width-height(40px, 40px);
+}
+
+.node-info-title {
+      @include font-basic(0.9em, rgba(0, 0, 0, .52));
+      padding-bottom: 2px;
+}
+
+
+.node-detail {
+    flex-direction: row;
+    @include display-flex;
+    width: 100%;
+}
+
+
+.small-icon {
+    vertical-align: middle;
+    font-size: 1.4em;
+}
+
+.online-node {
+     color: #2196f3;
+    // color: $them-color;
+}
+
+
+.node-list{
+   @include width-height(100%, auto);
+   @include position-absolute(10px, 0px, 120px, 0px);
+   overflow: auto;
+}
+
+.node-state{
+    @include font-basic(0.9em, rgba(0, 0, 0, .42));
+    @include display-flex;
+}
+
+.node-gp {
+    font-size: 0.8em;
+}
+
+.node-op{
+    font-size: 0.8em;
+}
+
+.paginator{
+    @include position-absolute(auto, 0px, 60px, 0px);
+}
+
+.list-item{
+    color: #8B8989;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.list-usage {
+    height: 20px;
+    padding-top: 10px;
+}
+
+.heatmap-item {
+    @include mg (0, 5px, 0, 5px);
+}
+
+.heatmap {
+    width: 1.8em;
+    height: 1.8em;
+    box-sizing:border-box;
+    border-radius: 3px;
+    // background: linear-gradient(top, $them-color, $them-color 30%, white 30%, white);
+    // background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Safari 5.1 to 6.0 */
+    // background: -o-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Opera 11.1 to 12.0 */
+    // background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Firefox 3.6 to 15 */
+    // background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(top, $them-color, $them-color 70%, #E57373 30%, #E57373);
+}
+
+.job-text {
+
+}
