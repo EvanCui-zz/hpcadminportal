@@ -4,13 +4,17 @@
     height: 100%;
     overflow: auto;
     padding: 10px 20px;
+
+    .node-name{
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        margin: 10px 0px 0px 0px;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.7);
+    }
 }
-.node-name{
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    margin: 10px 0px 0px;
-}
+
 
 .detail-icon {
     color: $them-color;
@@ -21,6 +25,7 @@
     font-size: 28px;
     font-weight: 700;
     color: rgba(0,0,0,0.7);
+
 }
 
 .detail-block{

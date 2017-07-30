@@ -63,14 +63,13 @@ $filterlist-width: 260px;
   display: flex;
   width: 260px;
   height: 50px;
-  @include position-absolute(20px, 0px, auto, auto);
+  @include position-absolute(12px, 0px, auto, auto);
   div {
        width: 100px;
       //  color: $them-color;
-       background: #fff;
       //  height: 50px;
       //  @include mg(0px, 3px, 0px, 0);     
-       @include pd(10px, 0, 10px, 0);
+       @include pd(15px, 0, 10px, 0);
        
       
       
@@ -81,13 +80,12 @@ $filterlist-width: 260px;
 }
 
 .selected-btn {
-    
-    // margin-left: 10px;
-    // transform: scale(1.2,1.2);
+    background: #fff;
     color: #2196f3;
     z-index: 10;
-    // @include box-s(1px, -1px, 4px, #CFCFCF);
-    // z-index: 1000;
+    border: 1px solid #ddd;
+    border-bottom: 1px solid #fff; 
+    
 }
 
 .non-selected-btn{
@@ -100,11 +98,9 @@ $filterlist-width: 260px;
 
 .nodes-content {
   background: #FFFFFF;
-  @include position-absolute(60px, 10px, 0px, 0);
+  @include position-absolute(60px, 10px, 60px, 0);
   overflow: hidden;
-  // @include box-s(1px, 1px, 5px, #696969);
-  // border-top: 1px solid #eee;
-  z-index: 200;
+  border-top: 1px solid #ddd;
 }
 
 .filter-area{

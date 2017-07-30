@@ -11,6 +11,12 @@
     border-bottom: 1px dashed #D3D3D3;
     height: 40px;
     width: 100%;
+    @include pd(0, 5px, 0, 5px);
+    &:hover {
+        cursor: pointer;
+        @include box-s(0px, 0px, 5px, #888888);
+        transform: translateY(2px);
+    }
 }
 
 .node-name, .node-state, .node-health, .node-job, .node-event, .node-heatmap {
