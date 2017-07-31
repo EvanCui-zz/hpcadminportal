@@ -35,7 +35,7 @@ $filterlist-width: 260px;
 .filterlist{
   width: 240px;
   overflow: auto;
-  @include position-absolute(40px, 3px, 60px, 3px);
+  @include position-absolute(5px, 3px, 60px, 3px);
   display: block;
   margin: 0 auto;
 }
@@ -56,20 +56,67 @@ $filterlist-width: 260px;
     @include mg(0, 10px, 0, 10px);
     text-align: center;
     @include position-absolute(0, 0, auto, 0);
+}
 
+.search-area {
+  @include position-absolute(15px, auto, auto, 15px);
+  // height: 40px;
+}
+
+.search-input {
+  height: 27px;
+  width: 300px;
+  @include pd(3px, 10px, 3px, 10px);
+   &:focus {
+    animation: glow 1.2s ease-out infinite alternate;
+    outline: none;
+    height: 30px;
+    border-radius: 2px;
+    border-width: 0px;
+    box-shadow: 0 0 5px rgba(	30, 144, 255, .8), inset 0 0 2px rgba(30, 144, 255, .6), 0 0 0px #1E90FF;
+   }
+}
+
+.search-btn {
+  background: #fff;
+  outline: none;
+  height: 35px;
+  border: 0px;
+  margin-left: 10px;
+  @include box-s(1px, 1px, 5px, #696969);
+  @include pd(0, 5px, 0, 5px);
+
+  &:hover {
+    cursor: pointer;
+    background: #0078d7;
+    color: #fff;
+  }
+}
+
+@keyframes glow {
+  100% {
+        border-color: rgba(30, 144, 255, 1);
+        border-width: 0px;
+        box-shadow: 0 0 5px rgba(30, 144, 255, .8), inset 0 0 5px rgba(30, 144, 255, .6), 0 0 0px #1E90FF;
+  }    
+  0% {
+        border-color:   rgba(30, 144, 255, .8);
+        border-width: 0px;
+         box-shadow: 0 0 8px rgba(30, 144, 255, .5), inset 0 0 4px rgba(30, 144, 255, .2), 0 0 0px #4169E1;
+    }
 }
 
 .toggle-btn{
   display: flex;
   width: 260px;
-  height: 50px;
-  @include position-absolute(12px, 0px, auto, auto);
+  height: 40px;
+  @include position-absolute(22px, 0px, auto, auto);
   div {
        width: 100px;
       //  color: $them-color;
       //  height: 50px;
       //  @include mg(0px, 3px, 0px, 0);     
-       @include pd(15px, 0, 10px, 0);
+       @include pd(10px, 0, 10px, 0);
        
       
       

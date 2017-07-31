@@ -13,62 +13,10 @@
             <div class="text-info"> {{node.nodeHealth}}</div>
         </div>
         <div class="node-heatmap">
-            <div class="heatmap-item">
+            <div class="heatmap-item" [ngStyle]="{'background-color': node.nodeHealth == 'OK' ? colorScale(node.cpuUsage) : errorColorScale(node.cpuUsage)}">
 
             </div>
-            <div> 5 jobs running</div>
-        </div>
-
-        <div class="node-event">
-            <i class="material-icons event-text">event</i>
-            <div class="text-info event-text"> Discovering the configuration of the head node - 7/4/2017 11:40:31 AM</div>
-        </div>
-    </div>
-
-    <div class="node-item" *ngFor="let node of nodes" (click)="showDetail(node.name)">
-        <div class="node-name">
-            <i class="material-icons">desktop_windows</i>
-            <div class="text-info">{{node.name}}</div>
-        </div>
-        <div class="node-state" [class.online-node]="node.nodeState == 'Online'">
-            <i class="material-icons">phonelink</i>
-            <div class="text-info"> {{node.nodeState}}</div>
-        </div>
-        <div class="node-health" [class.online-node]="node.nodeHealth == 'OK'">
-            <i class="material-icons">error_outline</i>
-            <div class="text-info"> {{node.nodeHealth}}</div>
-        </div>
-        <div class="node-heatmap">
-            <div class="error-node heatmap-item">
-
-            </div>
-            <div> 5 jobs running</div>
-        </div>
-
-        <div class="node-event">
-            <i class="material-icons event-text">event</i>
-            <div class="text-info event-text"> Discovering the configuration of the head node - 7/4/2017 11:40:31 AM</div>
-        </div>
-    </div>
-
-    <div class="node-item" *ngFor="let node of nodes" (click)="showDetail(node.name)">
-        <div class="node-name">
-            <i class="material-icons">desktop_windows</i>
-            <div class="text-info">{{node.name}}</div>
-        </div>
-        <div class="node-state" [class.online-node]="node.nodeState == 'Online'">
-            <i class="material-icons">phonelink_off</i>
-            <div class="text-info"> {{node.nodeState}}</div>
-        </div>
-        <div class="node-health" [class.online-node]="node.nodeHealth == 'OK'">
-            <i class="material-icons">lightbulb_outline</i>
-            <div class="text-info"> {{node.nodeHealth}}</div>
-        </div>
-        <div class="node-heatmap">
-            <div class="light-color heatmap-item">
-
-            </div>
-            <div class="text-info"> 5 jobs running, 2 jobs failed</div>
+            <div> {{node.jobNum}} jobs running, {{node.errorJob}} jobs failed</div>
         </div>
 
         <div class="node-event">

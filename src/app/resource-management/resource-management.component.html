@@ -11,6 +11,10 @@
   </div>
   <div class="detail-container">
     <div class="search-row">
+      <div class="search-area">
+        <input class="search-input" placeholder="filter by name..."/>
+        <button class="search-btn"> search </button>
+      </div>
 
       <div class="toggle-btn">
         <div [class.non-selected-btn]="showView !== 'nodelist'" [class.selected-btn]="showView == 'nodelist'" (click)="showNodelist()">Node List</div>

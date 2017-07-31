@@ -11,6 +11,7 @@ import { NodeDetailComponent } from './node-detail/node-detail.component';
 import { FilterlistModule } from '../filterlist/filterlist.module';
 import { HttpPrefixService } from '../http-prefix.service';
 import { ResourceManagementService } from './resource-management.service';
+import { CapitalizePipe } from './node-detail/capitalize.pipe';
 
 
 
@@ -26,7 +27,8 @@ import { ResourceManagementService } from './resource-management.service';
     ResourceManagementComponent,
     ResourceDetailComponent,
     HeatmapComponent,
-    NodeDetailComponent
+    NodeDetailComponent,
+    CapitalizePipe
   ],
   providers: [
     HttpPrefixService,

@@ -8,6 +8,8 @@ import { FilterItem } from '../filterlist/filteritem';
 
 import { NodeItem } from './node-item';
 import { HeatmapItem } from './heatmap-item';
+import { MetadataItem } from './metadata-item';
+import { ScheduledEventItem } from './scheduled-event-item';
 import { HttpPrefixService } from '../http-prefix.service';
 
 @Injectable()
@@ -24,7 +26,7 @@ export class ResourceManagementService {
         return this.http
             .get(this.resourceUrl + '/api/nodes/filters')
             .toPromise()
-            .then(response => {          
+            .then(response => {
                 return response.json() as FilterItem[]
             })
             .catch(this.handleError);
@@ -34,24 +36,43 @@ export class ResourceManagementService {
         return this.http
             .get(this.resourceUrl + '/api/nodes/status?' + statu)
             .toPromise()
-            .then(response => {               
+            .then(response => {
                 return response.json() as NodeItem[];
             })
             .catch(this.handleError);
     }
 
-    getHeatmapInfo(aliases: string):Promise<HeatmapItem[]>{
-        return this.http    
-                .get(this.resourceUrl + '/api/Metrics?'+ aliases)
-                .toPromise()
-                .then(response => {
-                    return response.json() as HeatmapItem[];
-                })
-                .catch(this.handleError);
+    getHeatmapInfo(aliases: string): Promise<HeatmapItem[]> {
+        return this.http
+            .get(this.resourceUrl + '/api/Metrics?' + aliases)
+            .toPromise()
+            .then(response => {
+                return response.json() as HeatmapItem[];
+            })
+            .catch(this.handleError);
     }
 
     setNodeList(nodelist: NodeItem[]) {
         this.nodeList = nodelist;
+    }
+
+    getMetaData(name: string) {
+        return this.http
+            .get(this.resourceUrl + '/api/nodes/' + name + '/instance-metadata')
+            .toPromise()
+            .then(response => {
+                return response.json() as MetadataItem;
+            })
+            .catch(this.handleError);
+    }
+
+    getScheduledEvent(name: String) {
+        return this.http
+            .get(this.resourceUrl + '/api/nodes/' + name + '/scheduled-events/latest')
+            .toPromise().then(response => {
+                return response.json() as ScheduledEventItem;
+            })
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

@@ -11,9 +11,10 @@
     border-bottom: 1px dashed #D3D3D3;
     height: 40px;
     width: 100%;
-    @include pd(0, 5px, 0, 5px);
+    @include pd(0, 8px, 0, 5px);
     &:hover {
         cursor: pointer;
+        border-bottom-width: 0;
         @include box-s(0px, 0px, 5px, #888888);
         transform: translateY(2px);
     }
@@ -53,11 +54,11 @@
 //     width: 15%;
 // }
 .node-heatmap{
-    width: 25%;
+    width: 30%;
 }
 .node-event { 
     // width: 100px;
-    width: 40%;
+    width: 35%;
 }
 
 

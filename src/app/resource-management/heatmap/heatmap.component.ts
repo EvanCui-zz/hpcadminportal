@@ -20,25 +20,24 @@ export class HeatmapComponent implements OnInit {
   days = [];
   times = [];
   svg;
-  dayLabels;
-  timeLabels;
   gridSize = 40;
   height: number;
   cal_width: number;
   legendElementWidth: number;
   chartTitle: string;
   interval;
+  blockSize = this.gridSize + 2;
 
   drawPannel(size: number) {
     let containerWidth = document.getElementById("chart").clientWidth;
     const containerHeight = document.getElementById("chart").clientHeight;
     d3.select("svg").remove();
 
-    const x_node_num = Math.floor((containerWidth - this.margin.left - this.margin.right) / (this.gridSize + 2));
+    const x_node_num = Math.floor((containerWidth - this.margin.left - this.margin.right) / this.blockSize);
     const y_node_num = Math.ceil(size / x_node_num);
     // console.log(y_node_num);
-    const width = (this.gridSize + 2) * (x_node_num);
-    this.height = (this.gridSize + 2) * (y_node_num);
+    const width = (this.blockSize) * (x_node_num);
+    this.height = (this.blockSize) * (y_node_num);
     this.legendElementWidth = this.gridSize * 2;
     this.cal_width = width;
 
@@ -52,7 +51,7 @@ export class HeatmapComponent implements OnInit {
       .attr("width", containerWidth)
       .attr("height", this.height + this.margin.top + this.margin.bottom)
       .append("g")
-      .attr("transform", "translate(" + g_mgL + "," + this.margin.top + ")");
+      .attr("transform", "translate(" + g_mgL + "," + 0 + ")");
 
   }
 
@@ -61,11 +60,13 @@ export class HeatmapComponent implements OnInit {
     // // '#e7f2f9','#abd9e9','#74add1','#4575b4','#313695'
     // const colors = ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]; // alternatively colorbrewer.YlGnBu[9]
     // const colors = ["#E3F2FD", "#BBDEFB", "#90CAF9", "#64B5F6", "#42A5F5", "#2196F3", "#1E88E5", "#1976D2", "#1565C0"];
-    const colors = ["#E1F5FE", "#B3E5FC", "#81D4FA", "#EF5350", "#4FC3F7", "#29B6F6", "#03A9F4", "#039BE5", "#0288D1", "#0277BD", "#01579B"];
+    const colors = ["#E1F5FE", "#B3E5FC", "#81D4FA", "#4FC3F7", "#29B6F6", "#03A9F4", "#039BE5", "#0288D1", "#0277BD", "#01579B"];
+    const errorColors = ["#FFEBEE", "#FFCDD2", "#EF9A9A", "#E57373", "#EF5350", "#F44336", "#E53935", "#D32F2F", "#C62828", "#B71C1C"];
     const buckets = colors.length;
 
     const svg = this.svg;
     const gridSize = this.gridSize;
+    const blockSize = this.blockSize;
     const height = this.height;
     const legendElementWidth = this.legendElementWidth;
     const cal_width = this.cal_width;
@@ -75,91 +76,100 @@ export class HeatmapComponent implements OnInit {
       .style("opacity", 0);
 
     const heatmapChart = function (data) {
-      d3.json(data, (error, data) => {
+      // d3.json(data, (error, data) => {
 
-        const colorScale = d3.scaleQuantile()
-          .domain([0, 100])
-          .range(colors);
+      const colorScale = d3.scaleQuantile()
+        .domain([0, 100])
+        .range(colors);
 
-        const cards = svg.selectAll(".node")
-          .data(data, (d, index) => {
-            return index;
-          });
+      const errorColorScale = d3.scaleQuantile()
+        .domain([0, 100])
+        .range(errorColors);
+
+      const cards = svg.selectAll(".node")
+        .data(data, (d, index) => {
+          return index;
+        });
 
 
 
-        const rect = cards.enter().append("rect");
+      const rect = cards.enter().append("rect");
 
-        rect.attr("x", (d, index) => {
-          return ((index) * (gridSize + 2)) % cal_width;
+      rect.attr("x", (d, index) => {
+        return ((index) * (blockSize)) % cal_width;
+      })
+        .attr("y", (d, index) => Math.floor(index * (blockSize) / cal_width) * (blockSize) + 25)
+        .attr("rx", 5)
+        .attr("ry", 5)
+        .attr("class", "node bordered")
+        .attr("width", gridSize)
+        .attr("height", gridSize)
+        .style("fill", colors[0])
+        .on("click", function (d) {
+          console.log(d.value);
+
         })
-          .attr("y", (d, index) => Math.floor(index * (gridSize+2) / cal_width) * (gridSize+2) + gridSize +18)
-          // .attr("cx", (d) => (d.hour - 1) * gridSize)
-          // .attr("cy", (d) => (d.day - 1) * gridSize)
-          // .attr("r", 13)
-          .attr("rx", 5)
-          .attr("ry", 5)
-          .attr("class", "node bordered")
-          .attr("width", gridSize)
-          .attr("height", gridSize)
-          .style("fill", colors[0])
-          .on("click", function (d) {
-            console.log(d.value);
+        .on("mouseover", function (d) {
+          div.transition()
+            .duration(200)
+            .style("opacity", .9);
+          div.html(d.value)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mousemove", function (d) {
+          div.transition()
+            .duration(200)
+            .style("opacity", .9);
+          let usage = (d.value).toFixed(1) + '%';
+          let nodeName = d.nodeName;
+          let showContent = "<div class='nodeName'>" + nodeName + "</div>" + usage;
+          div.html(showContent)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+        })
+        .on("mouseout", function () {
+          div.transition()
+            .duration(500)
+            .style("opacity", 0);
+        })
+        .merge(cards)
+        .transition()
+        .duration(300)
+        .style("fill", (d) => {
+          console.log(d.nodeState);
+          if (d.nodeState == "Error") {
+            return errorColorScale(d.value);
+          } else {
+            return colorScale(d.value);
+          }
 
-          })
-          .on("mouseover", function (d) {
-            div.transition()
-              .duration(200)
-              .style("opacity", .9);
-            div.html(d.value)
-              .style("left", (d3.event.pageX) + "px")
-              .style("top", (d3.event.pageY - 28) + "px");
-          })
-          .on("mousemove", function (d) {
-            div.transition()
-              .duration(200)
-              .style("opacity", .9);
-            let usage = (d.value).toFixed(1) + '%';
-            let nodeName = d.nodeName;
-            let showContent = "<div class='nodeName'>" + nodeName + "</div>" + usage;
-            div.html(showContent)
-              .style("left", (d3.event.pageX) + "px")
-              .style("top", (d3.event.pageY - 28) + "px");
-          })
-          .on("mouseout", function () {
-            div.transition()
-              .duration(500)
-              .style("opacity", 0);
-          })
-          .merge(cards)
-          .transition()
-          .duration(300)
-          .style("fill", (d) => colorScale(d.value));
+        });
 
-        cards.exit().remove();
+      cards.exit().remove();
 
-        const legend = svg.selectAll(".legend")
-          .data([0].concat(colorScale.quantiles()), (d) => { return d });
+      // const legend = svg.selectAll(".legend")
+      //   .data([0].concat(colorScale.quantiles()), (d) => { return d });
 
-        const legend_g = legend.enter().append("g")
-          .attr("class", "legend");
+      // const legend_g = legend.enter().append("g")
+      //   .attr("class", "legend");
 
-        legend_g.append("rect").attr("x", (d, i) => (cal_width - buckets * legendElementWidth) - legendElementWidth * i)
-          .attr("y", 0)
-          .attr("width", legendElementWidth)
-          .attr("height", gridSize / 2)
-          .style("fill", (d, i) => colors[i]);
+      // legend_g.append("rect").attr("x", (d, i) => (cal_width - buckets * legendElementWidth) - legendElementWidth * i)
+      //   .attr("y", 0)
+      //   .attr("width", legendElementWidth)
+      //   .attr("height", gridSize / 2)
+      //   .style("fill", (d, i) => colors[i]);
 
-        legend_g.append("text")
-          .attr("class", "mono")
-          .text((d) => {
-            return "≥ " + Math.round(d) + "%"
-          })
-          .attr("x", (d, i) => (cal_width - buckets * legendElementWidth) - legendElementWidth * (i-1/2))
-          .attr("y", gridSize);
+      // legend_g.append("text")
+      //   .attr("class", "mono")
+      //   .text((d) => {
+      //     return "≥ " + Math.round(d) + "%"
+      //   })
+      //   .attr("x", (d, i) => (cal_width - buckets * legendElementWidth) - legendElementWidth * (i - 1 / 2))
+      //   .attr("y", gridSize);
 
-        legend.exit().remove();
-      });
+      // legend.exit().remove();
+      // });
     };
 
     return heatmapChart;
@@ -175,54 +185,108 @@ export class HeatmapComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const datasets = ["input1", "input2", "input3", "input4", "input5",
-      "input6", "input7", "input8", "input9"];
+    // const datasets = ["input1", "input2", "input3", "input4", "input5",
+    //   "input6", "input7", "input8", "input9"];
 
-    this.chartTitle = "CPU Usage (%)";
-    this.drawPannel(300);
-    var testFunc = this.drawChart('../../../assets/input1.json');
-    testFunc('../../../assets/input1.json');
-     this.interval = setInterval(() => {
-        testFunc("../../../assets/"+datasets[Math.floor(Math.random()*(9-1)+1)]+ ".json") ;
-      }, 10000);
+    // this.chartTitle = "CPU Usage (%)";
+    // this.drawPannel(300);
+    // var testFunc = this.drawChart('../../../assets/input1.json');
+    // testFunc('../../../assets/input1.json');
+    // this.interval = setInterval(() => {
+    //   testFunc("../../../assets/" + datasets[Math.floor(Math.random() * (9 - 1) + 1)] + ".json");
+    // }, 10000);
 
 
-    // this.route.paramMap
-    //   .switchMap((params: ParamMap) => {
-    //     // let queryString = params.get('filterKey');
-    //     this.queryString = params.get('filterKey');
-    //     if (params.get('filterDetail') !== 'all') {
-    //       this.queryString = params.get('filterKey') + "=" + params.get('filterDetail');
-    //     }
+    this.route.paramMap
+      .switchMap((params: ParamMap) => {
+        // let queryString = params.get('filterKey');
+        this.queryString = params.get('filterKey');
+        if (params.get('filterDetail') !== 'all') {
+          this.queryString = params.get('filterKey') + "=" + params.get('filterDetail');
+        }
 
-    //     return this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage");
-    //   })
-    //   .subscribe(data => {
-    //     this.heatmapData = data;
-    //     if (data.length > 0) {
-    //       this.chartTitle = data[0].displayName;
-    //       this.drawPannel(data.length);
-    //     }
-    //     else {
-    //       this.drawPannel(0);
-    //     }
+        return this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage");
+      })
+      .subscribe(data => {
+        this.heatmapData = data;
 
-    //     var testFunc = this.drawChart(data);
-    //     testFunc(data);
+        d3.json('../../../assets/input1.json', (error, data) => {
+          let fakeData = data;
+          let random_nums = data.length;
+          this.heatmapData = this.heatmapData.concat(data);
+          console.log(this.heatmapData);
+          console.log(data);
 
-    //     if (this.interval) {
-    //       clearInterval(this.interval);
-    //     }
+          console.log(this.heatmapData.length);
+          if (this.heatmapData.length > 0) {
+            this.chartTitle = this.heatmapData[0].displayName;
+            this.drawPannel(this.heatmapData.length);
+          }
+          else {
+            this.drawPannel(0);
+          }
 
-    //     this.interval = setInterval(() => {
-    //       this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage").then((data) => {
-    //         this.heatmapData = data;
-    //         var testFunc = this.drawChart(data);
-    //         testFunc(data);
-    //       });
-    //     }, 10000);
+          var testFunc = this.drawChart(this.heatmapData);
+          testFunc(this.heatmapData);
 
-    //   });
+          if (this.interval) {
+            clearInterval(this.interval);
+          }
+
+          let errorNodes = [];
+
+          this.interval = setInterval(() => {
+            this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage").then((data) => {
+              // randomly pick node to be error state
+              for (let i = 0; i < 30; i++) {
+                let random_num = Math.floor(Math.random() * random_nums);
+                // console.log(random_num);
+                let random_node = fakeData[random_num];
+                // console.log(fakeData);
+                console.log(random_node);
+                let probability = Math.random() * 100;
+                if (random_node["nodeState"] == 'OK') {
+                  if (probability > 90 && errorNodes.length < 5) {
+                    random_node["nodeState"] = "Error";
+                    errorNodes.push(random_node);
+                  } else {
+                    let currentVal = random_node["value"];
+                    if (currentVal > 50) {
+                      random_node["value"] = random_node["value"] - 20;
+                    } else {
+                      random_node["value"] = random_node["value"] + 10;
+                    }
+
+                  }
+                } else {
+                  if (probability > 60) {
+                    random_node["nodeState"] = "OK";
+                  } else {
+                    let currentVal = random_node["value"];
+                    if (currentVal > 50) {
+                      random_node["value"] = random_node["value"] - 20;
+                    } else {
+                      random_node["value"] = random_node["value"] + 10;
+                    }
+                  }
+                }
+              }
+
+
+
+
+              this.heatmapData = data.concat(fakeData);
+              console.log(fakeData);
+              console.log(this.heatmapData);
+              var testFunc = this.drawChart(this.heatmapData);
+              testFunc(this.heatmapData);
+            });
+          }, 5000);
+
+        });
+
+
+      });
 
 
     //  this.interval = setInterval(() => {

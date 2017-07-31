@@ -1,10 +1,25 @@
 <div class="detail-page">
 
     <div class="node-name">
-        <div class="detail-icon">
-            <md-icon style="width: 40px; height:40px;font-size: 40px">computer</md-icon>
+        <div class="name-icon">
+            <div class="detail-icon">
+                <md-icon style="width: 40px; height:40px;font-size: 40px">computer</md-icon>
+            </div>
+            <div class="detail-node-name">{{nodeName}}</div>
         </div>
-        <div class="detail-node-name">{{nodeName}}</div>
+        <div class="go-back" (click)="goBack()">
+            <i class="material-icons back-icon">keyboard_return</i>
+        </div>
+    </div>
+    <div class="detail-block">
+        <div class="detail-title">
+            History Metrics
+        </div>
+        <div class="detail-info">
+            <div id="node-chart">
+
+            </div>
+        </div>
     </div>
     <div class="detail-block">
         <div class="detail-title job-block">
@@ -30,29 +45,72 @@
             <div class="info-date item">{{job.date}}</div>
         </div>
     </div>
+
     <div class="detail-block">
         <div class="detail-title">
-            History Metrics
+            Last Scheduled Event
         </div>
-        <div class="detail-info">
-            <div class="my-chart">
-                <div echarts [options]="chartOption" class="heatmap-chart" (chartInit)="onChartInit($event)"></div>
-            </div>
+        <div class="detail-info" *ngFor="let key of scheduledEventKeys">
+            <div class="info-name item">{{key}}</div>
+            <div class="info-detail item">{{scheduledEvent[key]}}</div>
         </div>
     </div>
 
-
-
-    
-    <div class="detail-block" *ngFor="let detailItem of nodeDetail">
+    <div class="detail-block">
         <div class="detail-title">
-            {{detailItem.name}}
+            Properties
         </div>
-        <div class="detail-info" *ngFor="let item of detailItem.detail">
-            <!-- <div class="detail-icon item"><md-icon>info_outline</md-icon></div>  -->
-            <div class="info-name item">{{item.name}}</div>
-            <div class="info-detail item">{{item.info}}</div>
+        <div class="detail-info" *ngFor="let key of computeKeys">
+            <div class="info-name item">{{key | capitalize}}</div>
+            <div class="info-detail item">{{compute[key]}}</div>
         </div>
     </div>
 
-</div>
+
+    <div class="detail-block">
+        <div class="detail-title">
+            Network
+        </div>
+        <div class="network-title" *ngFor="let item of interface">
+            <div class="interface-title">
+                <!-- <i class="material-icons">network_cell</i> -->
+                <div style="margin-left: 10px">Interface</div>
+            </div>
+            <div *ngFor="let v4 of item['ipv4']['ipAddress']" class="network-item">
+                <div class="ipv4-title"> IPV4</div>
+                <div class="network-info-item">
+                    <div class="network-info">
+                        <div class="network-info-name item">Private IP Address</div>
+                        <div class="info-detail item">{{v4["privateIpAddress"]}}</div>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-info-name item">Public IP Address</div>
+                        <div class="info-detail item">{{v4["publicIpAddress"]}}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngFor="let v6 of item['ipv6']['ipAddress']" class="network-item">
+                <div class="ipv6-title"> IPV6 </div>
+                <div class="network-info-item">
+                    <div class="network-info">
+                        <div class="network-info-name item">Private Ip Address</div>
+                        <div class="info-detail item">{{v6["privateIpAddress"]}}</div>
+                    </div>
+                    <div class="network-info">
+                        <div class="network-info-name item">Public IP pAddress</div>
+                        <div class="info-detail item">{{v6["publicIpAddress"]}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="network-item">
+                <div class="mac-title"> MAC </div>
+                <div class="network-info-item">
+                    <div class="network-info">
+                        <div class="network-info-name item">Mac Address</div>
+                        <div class="info-detail item">{{item["macAddress"]}}</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>

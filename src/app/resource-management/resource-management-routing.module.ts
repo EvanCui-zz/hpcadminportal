@@ -27,6 +27,7 @@ const resourceManagementRoutes: Routes = [
       {
         path: 'detail/:name',
         component: NodeDetailComponent,
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange'
       },
       {
         path: '',
