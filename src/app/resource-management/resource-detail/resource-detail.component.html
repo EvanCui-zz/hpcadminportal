@@ -16,7 +16,8 @@
             <div class="heatmap-item" [ngStyle]="{'background-color': node.nodeHealth == 'OK' ? colorScale(node.cpuUsage) : errorColorScale(node.cpuUsage)}">
 
             </div>
-            <div> job {{node.jobNum}} is running</div>
+            <div *ngIf="node.nodeHealth !== 'Error'"> Job {{node.jobNum}} is running</div>
+            <div *ngIf="node.nodeHealth == 'Error'"> No job is running</div>
         </div>
 
         <div class="node-event">

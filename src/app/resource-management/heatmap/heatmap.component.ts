@@ -137,8 +137,10 @@ export class HeatmapComponent implements OnInit {
         .transition()
         .duration(300)
         .style("fill", (d) => {
-         
-          if (d.nodeState == "Error") {
+          console.log(d["nodeState"]);
+
+          if (d["nodeState"] == "Error") {
+            console.log("error");
             return errorColorScale(d.value);
           } else {
             return colorScale(d.value);
@@ -199,6 +201,11 @@ export class HeatmapComponent implements OnInit {
       })
       .subscribe(data => {
         this.heatmapData = data;
+        this.heatmapData.map(function (item, index) {
+          if (item.nodeName == "HPCHN02") {
+            item["nodeState"] = "Error";
+          }
+        });
 
         d3.json('../../../assets/input1.json', (error, data) => {
           let fakeData = data;
@@ -206,7 +213,7 @@ export class HeatmapComponent implements OnInit {
           if (this.filterDetail == 'all') {
             this.heatmapData = this.heatmapData.concat(data);
           }
-         
+
           if (this.heatmapData.length > 0) {
             this.chartTitle = this.heatmapData[0].displayName;
             this.drawPannel(this.heatmapData.length);
@@ -227,6 +234,12 @@ export class HeatmapComponent implements OnInit {
           this.interval = setInterval(() => {
             this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage").then((data) => {
               this.heatmapData = data;
+              this.heatmapData.map(function (item, index) {
+                if (item.nodeName == "HPCHN02") {
+                  item["nodeState"] = "Error";
+                }
+              });
+              
               // randomly pick node to be error state
               if (this.filterDetail == 'all') {
                 for (let i = 0; i < 30; i++) {
@@ -265,8 +278,8 @@ export class HeatmapComponent implements OnInit {
 
                 this.heatmapData = data.concat(fakeData);
               }
-             
-             
+
+
               var testFunc = this.drawChart(this.heatmapData);
               testFunc(this.heatmapData);
             });

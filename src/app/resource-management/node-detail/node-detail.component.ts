@@ -141,7 +141,7 @@ export class NodeDetailComponent implements OnInit {
       .attr("y", this.blockSize * 1.5)
       .style("text-anchor", "middle")
       .attr("transform", "translate(" + this.gridSize / 2 + ", -6)")
-      .attr("class", (d, i) => ((i >= 7 && i <= 16) ? "timeLabel mono axis axis-worktime" : "timeLabel mono axis"));
+      .attr("class", (d, i) => ((i >= 7 && i <= 16) ? "timeLabel axis axis-worktime" : "timeLabel axis"));
 
   }
 
