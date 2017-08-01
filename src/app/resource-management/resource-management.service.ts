@@ -75,6 +75,15 @@ export class ResourceManagementService {
             .catch(this.handleError);
     }
 
+    // searchByNodeName(name: string) {
+    //     return this.http
+    //         .get(this.resourceUrl + '/api/nodes/status?nodeName=' + name)
+    //         .toPromise().then(response => {
+    //             return response.json() as NodeItem[];
+    //         })
+    //         .catch(this.handleError);
+    // }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);

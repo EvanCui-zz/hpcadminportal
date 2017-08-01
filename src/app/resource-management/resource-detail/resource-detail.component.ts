@@ -59,6 +59,9 @@ export class ResourceDetailComponent implements OnInit {
         if (params.get('filterDetail') !== 'all') {
           queryString = params.get('filterKey') + "=" + params.get('filterDetail');
         }
+
+        console.log(queryString);
+
         this.filterDetail = params.get('filterDetail');
 
 
@@ -76,7 +79,10 @@ export class ResourceDetailComponent implements OnInit {
             item["errorJob"] = item["errorJob"] = Math.floor(Math.random() * (50 - 20) + 20);
           }
         });
-        console.log(this.filterDetail);
+        
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
 
         if (this.filterDetail == 'all') {
           d3.json('../../../assets/nodelist.json', (error, data) => {

@@ -12,8 +12,8 @@
   <div class="detail-container">
     <div class="search-row">
       <div class="search-area">
-        <input class="search-input" placeholder="filter by name..."/>
-        <button class="search-btn"> search </button>
+        <input class="search-input" type="text" #box placeholder="filter by node name..." (keyup.enter)="searchByNodeName(box.value)"/>
+        <button class="search-btn" (click)="searchByNodeName(box.value)"> search </button>
       </div>
 
       <div class="toggle-btn">
@@ -28,3 +28,4 @@
   </div>
 
 </div>
+

@@ -61,5 +61,10 @@ export class ResourceManagementComponent implements OnInit{
     this.showView = "nodelist";
     this.router.navigate(['/resource/nodelist'+this.filterQueryString]);
   }
+
+  searchByNodeName(name:string): void {
+    console.log(name);
+    this.router.navigate(['/resource/'+this.showView,'nodeName',name]);
+  }
  
 }

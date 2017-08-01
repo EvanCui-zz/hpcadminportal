@@ -137,7 +137,7 @@ export class HeatmapComponent implements OnInit {
         .transition()
         .duration(300)
         .style("fill", (d) => {
-          console.log(d.nodeState);
+         
           if (d.nodeState == "Error") {
             return errorColorScale(d.value);
           } else {
@@ -183,20 +183,9 @@ export class HeatmapComponent implements OnInit {
   ) { }
 
 
+  filterDetail;
 
   ngOnInit(): void {
-    // const datasets = ["input1", "input2", "input3", "input4", "input5",
-    //   "input6", "input7", "input8", "input9"];
-
-    // this.chartTitle = "CPU Usage (%)";
-    // this.drawPannel(300);
-    // var testFunc = this.drawChart('../../../assets/input1.json');
-    // testFunc('../../../assets/input1.json');
-    // this.interval = setInterval(() => {
-    //   testFunc("../../../assets/" + datasets[Math.floor(Math.random() * (9 - 1) + 1)] + ".json");
-    // }, 10000);
-
-
     this.route.paramMap
       .switchMap((params: ParamMap) => {
         // let queryString = params.get('filterKey');
@@ -205,6 +194,7 @@ export class HeatmapComponent implements OnInit {
           this.queryString = params.get('filterKey') + "=" + params.get('filterDetail');
         }
 
+        this.filterDetail = params.get('filterDetail');
         return this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage");
       })
       .subscribe(data => {
@@ -213,11 +203,10 @@ export class HeatmapComponent implements OnInit {
         d3.json('../../../assets/input1.json', (error, data) => {
           let fakeData = data;
           let random_nums = data.length;
-          this.heatmapData = this.heatmapData.concat(data);
-          console.log(this.heatmapData);
-          console.log(data);
-
-          console.log(this.heatmapData.length);
+          if (this.filterDetail == 'all') {
+            this.heatmapData = this.heatmapData.concat(data);
+          }
+         
           if (this.heatmapData.length > 0) {
             this.chartTitle = this.heatmapData[0].displayName;
             this.drawPannel(this.heatmapData.length);
@@ -237,53 +226,54 @@ export class HeatmapComponent implements OnInit {
 
           this.interval = setInterval(() => {
             this.resourceManagementService.getHeatmapInfo(this.queryString + "&aliases=HPCCpuUsage").then((data) => {
+              this.heatmapData = data;
               // randomly pick node to be error state
-              for (let i = 0; i < 30; i++) {
-                let random_num = Math.floor(Math.random() * random_nums);
-                // console.log(random_num);
-                let random_node = fakeData[random_num];
-                // console.log(fakeData);
-                console.log(random_node);
-                let probability = Math.random() * 100;
-                if (random_node["nodeState"] == 'OK') {
-                  if (probability > 90 && errorNodes.length < 5) {
-                    random_node["nodeState"] = "Error";
-                    errorNodes.push(random_node);
-                  } else {
-                    let currentVal = random_node["value"];
-                    if (currentVal > 50) {
-                      random_node["value"] = random_node["value"] - 20;
+              if (this.filterDetail == 'all') {
+                for (let i = 0; i < 30; i++) {
+                  let random_num = Math.floor(Math.random() * random_nums);
+                  // console.log(random_num);
+                  let random_node = fakeData[random_num];
+                  // console.log(fakeData);
+                  console.log(random_node);
+                  let probability = Math.random() * 100;
+                  if (random_node["nodeState"] == 'OK') {
+                    if (probability > 90 && errorNodes.length < 5) {
+                      random_node["nodeState"] = "Error";
+                      errorNodes.push(random_node);
                     } else {
-                      random_node["value"] = random_node["value"] + 10;
-                    }
+                      let currentVal = random_node["value"];
+                      if (currentVal > 50) {
+                        random_node["value"] = random_node["value"] - 20;
+                      } else {
+                        random_node["value"] = random_node["value"] + 10;
+                      }
 
-                  }
-                } else {
-                  if (probability > 60) {
-                    random_node["nodeState"] = "OK";
+                    }
                   } else {
-                    let currentVal = random_node["value"];
-                    if (currentVal > 50) {
-                      random_node["value"] = random_node["value"] - 20;
+                    if (probability > 60) {
+                      random_node["nodeState"] = "OK";
                     } else {
-                      random_node["value"] = random_node["value"] + 10;
+                      let currentVal = random_node["value"];
+                      if (currentVal > 50) {
+                        random_node["value"] = random_node["value"] - 20;
+                      } else {
+                        random_node["value"] = random_node["value"] + 10;
+                      }
                     }
                   }
                 }
+
+                this.heatmapData = data.concat(fakeData);
               }
-
-
-
-
-              this.heatmapData = data.concat(fakeData);
-              console.log(fakeData);
-              console.log(this.heatmapData);
+             
+             
               var testFunc = this.drawChart(this.heatmapData);
               testFunc(this.heatmapData);
             });
           }, 5000);
 
         });
+
 
 
       });
