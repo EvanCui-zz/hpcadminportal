@@ -243,9 +243,9 @@ export class HeatmapComponent implements OnInit {
                     } else {
                       let currentVal = random_node["value"];
                       if (currentVal > 50) {
-                        random_node["value"] = random_node["value"] - 20;
+                        random_node["value"] = random_node["value"] - 50;
                       } else {
-                        random_node["value"] = random_node["value"] + 10;
+                        random_node["value"] = random_node["value"] + 50;
                       }
 
                     }
@@ -255,9 +255,9 @@ export class HeatmapComponent implements OnInit {
                     } else {
                       let currentVal = random_node["value"];
                       if (currentVal > 50) {
-                        random_node["value"] = random_node["value"] - 20;
+                        random_node["value"] = random_node["value"] - 50;
                       } else {
-                        random_node["value"] = random_node["value"] + 10;
+                        random_node["value"] = random_node["value"] + 50;
                       }
                     }
                   }

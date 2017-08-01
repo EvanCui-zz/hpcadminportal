@@ -20,68 +20,68 @@ export class NodeDetailComponent implements OnInit {
       owner: "Jingjing Li",
       state: "ongoing",
       progress: '40',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 20:35:00"
     },
     {
       name: "Job2",
       owner: "Jingjing Li",
       state: "ongoing",
       progress: '60',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 20:17:00"
     },
     {
       name: "Job3",
       owner: "Jingjing Li",
       state: "ongoing",
       progress: '80',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 20:11:00"
     },
     {
       name: "Job4",
       owner: "Jingjing Li",
       state: "ongoing",
       progress: '90',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 19:55:00"
     },
     {
       name: "Job5",
       owner: "Jingjing Li",
-      state: "ongoing",
+      state: "finished",
       progress: '100',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 19:15:00"
     },
     {
       name: "Job6",
       owner: "Jingjing Li",
-      state: "ongoing",
+      state: "finished",
       progress: '100',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 19:03:00"
     },
     {
       name: "Job7",
       owner: "Jingjing Li",
-      state: "ongoing",
+      state: "finished",
       progress: '100',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 18:47:00"
     },
     {
       name: "Job8",
       owner: "Jingjing Li",
-      state: "ongoing",
+      state: "finished",
       progress: '100',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 18:17:00"
     },
     {
       name: "Job9",
       owner: "Jingjing Li",
-      state: "ongoing",
+      state: "finished",
       progress: '100',
-      date: "2017/7/21 17:17:00"
+      date: "2017/7/21 17:30:00"
     },
     {
       name: "Job10",
       owner: "Jingjing Li",
-      state: "ongoing",
+      state: "finished",
       progress: '100',
       date: "2017/7/21 17:17:00"
     }

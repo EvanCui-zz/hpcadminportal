@@ -109,13 +109,13 @@ export class ResourceDetailComponent implements OnInit {
               let probability = Math.random() * 100;
               random_node["jobNum"] = Math.floor(Math.random() * (300 - 50) + 50)
               if (random_node["nodeHealth"] == "OK") {
-                if (probability > 90 && errorNodes.length < 3) {
+                if (probability > 90 && errorNodes.length < 2) {
                   random_node["nodeHealth"] = "Error";
                   random_node["errorJob"] = Math.floor(Math.random() * (50 - 20) + 20);
                   errorNodes.push(random_node);
                 } else {
 
-                  random_node["cpuUsage"] = random_node["cpuUsage"] > 50 ? random_node["cpuUsage"] - 20 : random_node["cpuUsage"] + 10;
+                  random_node["cpuUsage"] = random_node["cpuUsage"] > 50 ? random_node["cpuUsage"] - 50 : random_node["cpuUsage"] + 50;
 
 
                 }
@@ -125,7 +125,7 @@ export class ResourceDetailComponent implements OnInit {
                   random_node["errorJob"] = Math.floor(Math.random() * (20));
                 } else {
 
-                  random_node["cpuUsage"] = random_node["cpuUsage"] > 50 ? random_node["cpuUsage"] - 20 : random_node["cpuUsage"] + 10;
+                  random_node["cpuUsage"] = random_node["cpuUsage"] > 50 ? random_node["cpuUsage"] - 50 : random_node["cpuUsage"] + 50;
 
 
                 }

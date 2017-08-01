@@ -16,12 +16,12 @@
             <div class="heatmap-item" [ngStyle]="{'background-color': node.nodeHealth == 'OK' ? colorScale(node.cpuUsage) : errorColorScale(node.cpuUsage)}">
 
             </div>
-            <div> {{node.jobNum}} jobs running, {{node.errorJob}} jobs failed</div>
+            <div> job {{node.jobNum}} is running</div>
         </div>
 
         <div class="node-event">
             <i class="material-icons event-text">event</i>
-            <div class="text-info event-text"> Discovering the configuration of the head node - 7/4/2017 11:40:31 AM</div>
+            <div class="text-info event-text"> Discover service role on node {{node.name}} - 7/24/2017 11:40:31 AM</div>
         </div>
     </div>
 </div>
